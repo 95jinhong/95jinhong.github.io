@@ -1,0 +1,1903 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="박진홍 — DevOps Engineer 5년 1개월. AWS EKS, Kubernetes, Terraform, ArgoCD, GitHub Actions 기반 인프라 자동화 전문가의 포트폴리오.">
+  <meta property="og:title" content="박진홍 | DevOps Engineer Portfolio">
+  <meta property="og:description" content="안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://95jinhong.github.io">
+  <meta name="theme-color" content="#2563eb">
+  <title>박진홍 | DevOps Engineer</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================================
+       CSS Custom Properties — Soft Pastel
+       ============================================================ */
+    :root {
+      --color-bg: #ffffff;
+      --color-bg-alt: #f8f9fc;
+      --color-bg-card: #ffffff;
+      --color-text: #2d3748;
+      --color-text-sub: #718096;
+      --color-primary: #6366f1;
+      --color-primary-dark: #4f46e5;
+      --color-primary-light: #eef2ff;
+      --color-border: #e2e8f0;
+      --color-accent-bg: #ecfdf5;
+      --color-accent-text: #065f46;
+      --color-divider: #edf2f7;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-pill: 9999px;
+      --max-width: 860px;
+      --section-gap: 4rem;
+      --card-padding: 1.5rem;
+    }
+
+    /* ============================================================
+       Reset & Base
+       ============================================================ */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 56px;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: opacity 0.15s;
+    }
+
+    a:hover {
+      opacity: 0.75;
+      text-decoration: none;
+    }
+
+    ul {
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* ============================================================
+       Layout
+       ============================================================ */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    main {
+      padding-bottom: 5rem;
+    }
+
+    section {
+      padding: var(--section-gap) 0;
+    }
+
+    /* Section fade-up animation */
+    .section-animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .section-animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 5vw, 2.4rem);
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .section-divider {
+      border: none;
+      border-top: 2px solid var(--color-divider);
+      margin: 0 0 2rem;
+    }
+
+    /* ============================================================
+       Sticky Nav — Soft clean
+       ============================================================ */
+    .sticky-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+    }
+
+    .nav-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      white-space: nowrap;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-logo {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      margin-right: 1rem;
+      flex-shrink: 0;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      letter-spacing: -0.01em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .nav-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.35rem 0.75rem;
+      min-height: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--color-text-sub);
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+      flex-shrink: 0;
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-link:hover {
+      color: var(--color-primary-dark);
+      background: var(--color-primary-light);
+      opacity: 1;
+    }
+
+    .nav-link.active {
+      background: var(--color-primary-light);
+      color: var(--color-primary-dark);
+      font-weight: 700;
+      opacity: 1;
+    }
+
+    /* ============================================================
+       Profile Header
+       ============================================================ */
+    #profile {
+      padding: 4.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .profile-inner {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .profile-text {
+      flex: 1;
+    }
+
+    .profile-photo {
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    .profile-photo img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top;
+      border: 3px solid var(--color-border);
+    }
+
+    .profile-name {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 800;
+      color: var(--color-text);
+      letter-spacing: -0.04em;
+      margin-bottom: 0.3rem;
+      line-height: 1.1;
+    }
+
+    .profile-role {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .profile-tagline {
+      font-size: 0.975rem;
+      color: var(--color-text);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 1.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--color-primary-light);
+      border: 1.5px solid #c7d2fe;
+      border-radius: var(--radius);
+    }
+
+    .profile-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.875rem;
+      border-radius: var(--radius-pill);
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--color-text);
+      min-height: 44px;
+      text-decoration: none;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .contact-link:hover {
+      background: var(--color-primary-light);
+      border-color: #c7d2fe;
+      color: var(--color-primary-dark);
+      opacity: 1;
+    }
+
+    .contact-link svg {
+      flex-shrink: 0;
+    }
+
+    /* ============================================================
+       About
+       ============================================================ */
+    .about-paragraphs p {
+      margin-bottom: 1rem;
+      color: var(--color-text);
+      line-height: 1.8;
+      font-size: 0.975rem;
+    }
+
+    .about-paragraphs p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-highlight {
+      border-left: 4px solid var(--color-primary);
+      background: var(--color-primary-light);
+      padding: 1rem 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 1.5rem;
+    }
+
+    .about-highlight p {
+      margin-bottom: 0 !important;
+      font-size: 0.925rem;
+      color: var(--color-text);
+    }
+
+    .about-skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .about-skill-tag {
+      display: inline-block;
+      padding: 0.3rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1.5px solid #c7d2fe;
+      background: #eef2ff;
+      color: #4338ca;
+      letter-spacing: 0.01em;
+    }
+
+    /* ============================================================
+       Core Competencies
+       ============================================================ */
+    .whatido-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+
+    .whatido-card {
+      padding: 1.5rem;
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .whatido-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+    }
+
+    .whatido-card:nth-child(1) { background: #eef2ff; }
+    .whatido-card:nth-child(2) { background: #fef3c7; }
+    .whatido-card:nth-child(3) { background: #ecfdf5; }
+    .whatido-card:nth-child(4) { background: #eff6ff; }
+
+    .whatido-icon {
+      font-size: 1.75rem;
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .whatido-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+
+    .whatido-desc {
+      color: var(--color-text-sub);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       Work Experience
+       ============================================================ */
+    .company-block {
+      margin-bottom: 4rem;
+    }
+
+    .company-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .company-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .company-header.no-toggle {
+      cursor: default;
+    }
+
+    .company-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      object-fit: contain;
+      border: 2px solid var(--color-border);
+      background: var(--color-bg-card);
+    }
+
+    .company-desc {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--color-text-sub);
+      margin-top: 0.15rem;
+    }
+
+    .company-name {
+      font-size: clamp(1.35rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: var(--color-text);
+      letter-spacing: -0.03em;
+    }
+
+    .company-projects {
+      margin-top: 1rem;
+    }
+
+    .company-block.collapsed .company-projects {
+      display: none;
+    }
+
+    .company-show-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.75rem;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-primary-light, #eef2ff);
+      border: 1.5px solid var(--color-primary);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      user-select: none;
+    }
+
+    .company-show-toggle:hover {
+      background: var(--color-primary);
+      color: #fff;
+    }
+
+    .company-meta {
+      font-size: 0.875rem;
+      color: var(--color-text-sub);
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+
+    .company-env {
+      font-size: 0.85rem;
+      color: #7c6a0a;
+      margin-bottom: 1.75rem;
+      padding: 0.6rem 1rem;
+      background: #fef9c3;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid #eab308;
+      font-weight: 500;
+    }
+
+    /* Project Card */
+    .project-card {
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      margin-bottom: 1.25rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+    }
+
+    .project-card.open {
+      border-color: #c7d2fe;
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.12);
+    }
+
+    .project-card.open:hover {
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.18);
+    }
+
+    .project-header {
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .project-header:hover .project-title {
+      color: var(--color-primary);
+    }
+
+    .project-title {
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      font-weight: 700;
+      color: var(--color-text);
+      flex: 1;
+      transition: color 0.15s;
+      letter-spacing: -0.01em;
+    }
+
+    .project-period {
+      font-size: 0.75rem;
+      color: var(--color-text-sub);
+      white-space: nowrap;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      background: var(--color-bg-alt);
+      padding: 0.2rem 0.5rem;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--color-divider);
+    }
+
+    .project-toggle {
+      font-size: 1.1rem;
+      color: var(--color-text-sub);
+      transition: transform 0.25s;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .project-card.open .project-toggle {
+      transform: rotate(180deg);
+    }
+
+    .project-body {
+      padding: 0 1.5rem 1.5rem;
+      display: none;
+    }
+
+    .project-card.open .project-body {
+      display: block;
+    }
+
+    /* Always-visible summary row */
+    .project-summary {
+      padding: 0 1.5rem 0.875rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .achievement-tag {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: #eef2ff;
+      color: #4338ca;
+      font-size: 0.77rem;
+      font-weight: 600;
+      border: 1.5px solid #c7d2fe;
+    }
+
+    /* 비용 관련 - Green */
+    .achievement-tag.tag-cost {
+      background: #ecfdf5;
+      color: #065f46;
+      border-color: #a7f3d0;
+    }
+
+    /* 보안 관련 - Pink */
+    .achievement-tag.tag-security {
+      background: #fdf2f8;
+      color: #9d174d;
+      border-color: #fbcfe8;
+    }
+
+    /* 성능 관련 - Blue */
+    .achievement-tag.tag-performance {
+      background: #eff6ff;
+      color: #1e40af;
+      border-color: #bfdbfe;
+    }
+
+    /* 인프라/자동화 관련 - Purple */
+    .achievement-tag.tag-infra {
+      background: #f5f3ff;
+      color: #5b21b6;
+      border-color: #c4b5fd;
+    }
+
+    /* 오픈소스/관측 관련 - Orange */
+    .achievement-tag.tag-opensource {
+      background: #fff7ed;
+      color: #9a3412;
+      border-color: #fed7aa;
+    }
+
+    /* Project content sections */
+    .project-section {
+      margin-bottom: 1.1rem;
+    }
+
+    .project-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-section-title {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--color-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-section ul {
+      list-style: disc;
+    }
+
+    .project-section ul li {
+      font-size: 0.9rem;
+      color: var(--color-text);
+      margin-bottom: 0.4rem;
+      line-height: 1.65;
+    }
+
+    .project-section p {
+      font-size: 0.9rem;
+      color: var(--color-text);
+      line-height: 1.65;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Contribution badge */
+    .contribution-badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      background: var(--color-primary-light);
+      border-left: 4px solid var(--color-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+      color: var(--color-text);
+      font-weight: 600;
+      line-height: 1.55;
+    }
+
+    .contribution-badge::before {
+      content: "👤";
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Project ref links — inline badge in header */
+    .project-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .project-ref-link {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      background: var(--color-primary-light, #eef2ff);
+      border: 1px solid var(--color-primary);
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .project-ref-link:hover {
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+      opacity: 1;
+    }
+
+    /* Mermaid diagrams */
+    .diagram-wrap {
+      margin-top: 0.75rem;
+      overflow-x: auto;
+      background: var(--color-bg-alt);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+
+    pre.mermaid {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* ============================================================
+       Certifications / Education / Awards
+       ============================================================ */
+    .bottom-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .bottom-card {
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      padding: var(--card-padding);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .bottom-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+    }
+
+    .bottom-card-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1.5px solid var(--color-divider);
+    }
+
+    .cert-item,
+    .edu-item,
+    .award-item {
+      margin-bottom: 0.9rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 1px dashed var(--color-divider);
+    }
+
+    .cert-item:last-child,
+    .edu-item:last-child,
+    .award-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .cert-name {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .cert-date {
+      font-size: 0.775rem;
+      color: var(--color-text-sub);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 0.15rem;
+      font-weight: 600;
+    }
+
+    .edu-school {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--color-text);
+    }
+
+    .edu-major {
+      font-size: 0.825rem;
+      color: var(--color-text-sub);
+      margin-top: 0.15rem;
+    }
+
+    .edu-period {
+      font-size: 0.775rem;
+      color: var(--color-text-sub);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 0.15rem;
+      font-weight: 600;
+    }
+
+    .award-name {
+      font-weight: 700;
+      font-size: 0.875rem;
+      color: var(--color-text);
+      line-height: 1.4;
+    }
+
+    .award-org {
+      font-size: 0.8rem;
+      color: var(--color-text-sub);
+      margin-top: 0.15rem;
+    }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    footer {
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text-sub);
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.82rem;
+      background: var(--color-bg-alt);
+    }
+
+    footer a {
+      color: var(--color-text-sub);
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      color: var(--color-text);
+      opacity: 1;
+    }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      :root {
+        --section-gap: 3rem;
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .bottom-grid .bottom-card:last-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 600px) {
+      :root {
+        --section-gap: 2.5rem;
+      }
+
+      body {
+        font-size: 0.9rem;
+      }
+
+      .container {
+        padding: 0 1.25rem;
+      }
+
+      .nav-inner {
+        padding: 0 1.25rem;
+      }
+
+      .profile-inner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile-photo {
+        order: -1;
+        margin-bottom: 1rem;
+      }
+
+      .profile-photo img {
+        width: 120px;
+        height: 120px;
+      }
+
+      .profile-tagline {
+        max-width: 100%;
+      }
+
+      .profile-contacts {
+        justify-content: center;
+      }
+
+      .whatido-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-grid .bottom-card:last-child {
+        grid-column: auto;
+      }
+
+      .project-header {
+        padding: 0.875rem 1.1rem;
+      }
+
+      .project-body {
+        padding: 0 1.1rem 1.1rem;
+      }
+
+      .project-summary {
+        padding: 0 1.1rem 0.75rem;
+      }
+    }
+
+    /* ============================================================
+       Print
+       ============================================================ */
+    @media print {
+      * { box-shadow: none !important; border-color: #ccc !important; }
+      body { font-size: 12px; color: #000; background: #fff; }
+      .sticky-nav, .no-print { display: none !important; }
+      .project-card { break-inside: avoid; }
+      a { color: #000; text-decoration: underline; }
+      a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
+      .project-body { display: block !important; }
+      .project-toggle { display: none; }
+      .whatido-grid { display: block; }
+      .whatido-card { margin-bottom: 0.5rem; background: #fff !important; }
+      .section-animate { opacity: 1 !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Sticky Nav
+       ============================================================ -->
+  <nav class="sticky-nav" role="navigation" aria-label="주요 섹션">
+    <div class="nav-inner">
+      <span class="nav-logo">박진홍.dev</span>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+      <a href="#competencies" class="nav-link" data-section="competencies">역량</a>
+      <a href="#experience" class="nav-link" data-section="experience">경력</a>
+      <a href="#certifications" class="nav-link" data-section="certifications">자격증</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ============================================================
+         Profile Header
+         ============================================================ -->
+    <section id="profile">
+      <div class="container">
+        <div class="profile-inner">
+          <div class="profile-text">
+            <h1 class="profile-name">박진홍</h1>
+            <p class="profile-role">DevOps Engineer · 5년 1개월</p>
+            <p class="profile-tagline">안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer</p>
+            <div class="profile-contacts">
+              <a href="mailto:95jinhong@gmail.com" class="contact-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                95jinhong@gmail.com
+              </a>
+              <a href="tel:010-3090-7243" class="contact-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127 1.024.382 2.03.76 3a2 2 0 01-.45 2.11L6.27 7.9A16 16 0 0016.1 17.73l1.08-1.08a2 2 0 012.11-.45c.97.378 1.976.633 3 .76A2 2 0 0122 16.92z"/></svg>
+                010-3090-7243
+              </a>
+              <a href="https://github.com/95jinhong" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/devopsengineer-jinhongpark" class="contact-link" target="_blank" rel="noopener noreferrer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div class="profile-photo">
+            <img src="assets/박진홍_프로필사진.JPG" alt="박진홍 프로필 사진" width="160" height="160">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         About
+         ============================================================ -->
+    <section id="about" class="section-animate">
+      <div class="container">
+        <h2 class="section-title">👋 About</h2>
+        <hr class="section-divider">
+        <div class="about-paragraphs">
+          <p>5년 경력의 DevOps 엔지니어로, AWS·Naver Cloud와 온프레미스 및 VMware 환경에서 Kubernetes 기반 인프라를 설계·구축·운영해 왔습니다. IaC(Terraform)와 GitOps(ArgoCD)로 배포 일관성을 높이고, 오픈소스 솔루션을 직접 평가·선택·운영하는 방식을 선호합니다.</p>
+          <p>비브로스(똑닥)에서 EKS 기반 인프라를 Terraform·ArgoCD·GitHub Actions로 자동화하며, SaaS→OSS 전환과 ARM(Graviton) 이전으로 비용 구조를 개선하고, 위협 탐지·대응 자동화와 통합 Observability 체계를 구축·운영하고 있습니다.</p>
+          <p>개발자가 인프라 세부 사항 없이도 셀프서비스로 배포할 수 있는 표준화된 파이프라인과 운영 체계 구축을 지향합니다. 장애 예방·자동화·비용 효율화를 통해 조직의 개발 속도와 운영 안정성을 동시에 높이는 것이 추구하는 DevOps입니다.</p>
+          <div class="about-highlight">
+            <p><strong>현재 관심 방향:</strong> AI를 활용한 장애 사전 탐지 시스템을 구축하고 있으며, OTel 비즈니스 메트릭(API 요청량·병원 접수 건수 비교)을 통해 예측 탐지와 알림 체계를 구성하였습니다. 수동 인프라 작업 티켓을 플랫폼 엔지니어링으로 자동화하고, 매월 보안 점검 항목에 AI 플러그인을 적용하는 등 DevOps 효율화를 지속적으로 강화하고 있습니다.</p>
+          </div>
+          <div class="about-skills">
+            <span class="about-skill-tag">Kubernetes</span>
+            <span class="about-skill-tag">AWS</span>
+            <span class="about-skill-tag">VMware</span>
+            <span class="about-skill-tag">Terraform</span>
+            <span class="about-skill-tag">OpenSource</span>
+            <span class="about-skill-tag">Go</span>
+            <span class="about-skill-tag">Security</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         What I Do
+         ============================================================ -->
+    <section id="competencies" class="section-animate">
+      <div class="container">
+        <h2 class="section-title">🔧 What I Do</h2>
+        <hr class="section-divider">
+        <div class="whatido-grid">
+          <div class="whatido-card">
+            <span class="whatido-icon">⚡</span>
+            <h4 class="whatido-title">비용 최적화</h4>
+            <p class="whatido-desc">SaaS→OSS 전환, ARM 이전, Karpenter 노드풀 전략으로 인프라 비용 구조를 개선합니다</p>
+          </div>
+          <div class="whatido-card">
+            <span class="whatido-icon">🔒</span>
+            <h4 class="whatido-title">서비스 보안</h4>
+            <p class="whatido-desc">클라우드 GuardDuty, WAF, IAM, VPN, K8s 보안 설계 및 탐지 시스템을 구축 운영합니다</p>
+          </div>
+          <div class="whatido-card">
+            <span class="whatido-icon">📊</span>
+            <h4 class="whatido-title">통합 Observability</h4>
+            <p class="whatido-desc">Prometheus·Thanos·Grafana로 메트릭-로그-트레이스를 단일 관제 체계로 통합합니다</p>
+          </div>
+          <div class="whatido-card">
+            <span class="whatido-icon">🚀</span>
+            <h4 class="whatido-title">배포 자동화</h4>
+            <p class="whatido-desc">Terraform·ArgoCD·GitHub Actions로 GitOps 기반 무중단 배포와 셀프서비스 파이프라인을 구축합니다</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Work Experience
+         ============================================================ -->
+    <section id="experience" class="section-animate">
+      <div class="container">
+        <h2 class="section-title">💼 Work Experience</h2>
+        <hr class="section-divider">
+
+        <!-- ── 비브로스(똑닥) ── -->
+        <div class="company-block" id="company-ddocdoc">
+          <div class="company-header">
+            <img src="assets/ddocdoc-icon.png" alt="비브로스(똑닥) 로고" class="company-icon">
+            <h3 class="company-name">비브로스 (똑닥) <span class="company-desc">누적 가입자 1,000만명 · MAU 200만명 헬스케어 O2O 플랫폼</span></h3>
+          </div>
+          <p class="company-meta">DevOps Engineer · 매니저 &nbsp;|&nbsp; 2022.12 ~ 현재</p>
+          <p class="company-env">AWS EKS 멀티 클러스터 운영 · Terraform 전체 AWS 리소스 형상관리 · GitOps 배포 자동화 · 통합 Observability 구축 · 클라우드 보안 고도화</p>
+
+          <button class="company-show-toggle" onclick="toggleCompany('company-ddocdoc')">
+            <span class="toggle-text">프로젝트 접기</span> ▾
+          </button>
+          <div class="company-projects">
+          <!-- 5-7b AI 간식대장 -->
+          <div class="project-card open" id="proj-5-7b">
+            <div class="project-header" onclick="toggleProject('proj-5-7b')">
+              <h4 class="project-title">AI 활용 사내 서비스 구축 (구멍가게24)</h4>
+              <div class="project-meta">
+                <span class="project-period">2026.03</span>
+              </div>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-infra">6시간 내 MVP 구축</span>
+              <span class="achievement-tag tag-opensource">Claude 기반 프롬프트 설계</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>사내 간식 주문을 수작업으로 요청·처리하던 프로세스를 AI 기반으로 자동화하여 복지를 개선하고자 했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>AI 프롬프트 설계:</strong> Claude 기반 Skill·Hook 구성으로 6시간 이내 사용 가능한 서비스 구축</li>
+                  <li><strong>데이터 관리:</strong> 유지보수 최소화를 위해 Excel 기반 데이터 저장, 별도 DB 미사용</li>
+                  <li><strong>접근 제어:</strong> 사내 DNS에 도메인 등록, 내부 접근만 허용하도록 설계</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>Claude 기반 프롬프트 아키텍처 설계 및 백엔드 구성</li>
+                  <li>자체 호스팅으로 사내 서비스 배포</li>
+                  <li>인증서 기반 사내 도메인 연동</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <span class="contribution-badge">아키텍처 설계, 백엔드 및 인프라 구성 전담</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-7a Proxmox -->
+          <div class="project-card" id="proj-5-7a">
+            <div class="project-header" onclick="toggleProject('proj-5-7a')">
+              <h4 class="project-title">사내 Proxmox 가상화 플랫폼 도입</h4>
+              <div class="project-meta">
+                <span class="project-period">2026.01 ~ 2026.02</span>
+              </div>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-cost">서버 추가 구매 없이 확장</span>
+              <span class="achievement-tag tag-infra">VM 구축 5분 이내</span>
+              <span class="achievement-tag tag-infra">서버 약 40대 운영</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>기존 Windows Hyper-V 기반 사내 장비의 성능 이슈와 확장성·유지보수 한계가 있었습니다. 서버 추가 구매를 검토했으나 메모리 가격 급등으로 기존 약 천만원 서버가 사천만원까지 비용이 증가하여, 하드웨어 대신 소프트웨어로 해결하기로 결정했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>네트워크 설계:</strong> 특정 EMR은 인터넷 통신 차단, 특정 EMR은 브로드캐스트 허용 등 요구사항별 vLAN 설계가 가장 난이도 높았음</li>
+                  <li><strong>스토리지 구성:</strong> Host는 LVM, Disk 이미지는 NAS 공유, 백업은 Backup Server → S3 저장 및 임포트 복제 구조</li>
+                  <li><strong>네트워크 구성:</strong> Bridge, NAT, Host 등 사용 목적별 구성 + EMR 간 통신을 위한 다중 vLAN</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>Proxmox 선택:</strong> VMware·OpenStack과 비교 후, 라이선스 비용 없이 확장성·유지보수가 가능한 Proxmox를 선택. KVM/LXC 지원으로 빠른 성능 제공, 클러스터 구조로 UI 통합 관리 가능</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>데스크탑 PC를 서버 케이스로 이관, Proxmox OS 셋업 및 클러스터 구성</li>
+                  <li>스토리지·네트워크·백업 전략·알림 체계(OTel + Slack) 구축</li>
+                  <li>사내 EMR 마이그레이션 및 부서별 EMR 환경 제공</li>
+                  <li>인증서 기반 사내 도메인 구성 — 검증된 사용자만 접근 가능한 관리 체계</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-cost">서버 추가 구매 없이 확장</span>
+                  <span class="achievement-tag tag-infra">VM 구축 5분 이내 (복제 전략)</span>
+                  <span class="achievement-tag tag-infra">서버 약 40대 운영</span>
+                </div>
+                <span class="contribution-badge">전반적인 프로젝트 설계 및 구성·운영 주도</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-1 -->
+          <div class="project-card" id="proj-5-1">
+            <div class="project-header" onclick="toggleProject('proj-5-1')">
+              <h4 class="project-title">인프라 아키텍처 고도화 및 비용 절감</h4>
+              <div class="project-meta">
+                <span class="project-period">2025</span>
+                <a href="https://boostbrothers.github.io/2023-11-01-infra-karpenter-migration" class="project-ref-link" target="_blank" rel="noopener noreferrer">기술블로그</a>
+              </div>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-cost">비용 20% 절감</span>
+              <span class="achievement-tag tag-cost">ARM(Graviton) 이전</span>
+              <span class="achievement-tag tag-cost">Karpenter 도입</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>한국 리전에서 c6a가 미지원되어 저성능 인스턴스로 운영 중이었습니다. 인프라 비용 절감과 성능 향상을 위해 Graviton(ARM)으로의 전환을 검토하고, Karpenter를 통해 서비스 목적에 맞는 다양한 인스턴스 풀을 On-demand+Spot 조합으로 구성하고자 했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>ARM 호환성:</strong> 개발자가 Mac(ARM)에서 로컬 빌드하여 호환성 문제는 적었으나, Self-hosted Action Runner의 골든 이미지를 ARM용으로 재구성하면서 패키지 버전 호환 문제를 해결했습니다. ARM을 지원하지 않거나 베타 단계인 서드파티는 x86 노드풀에 분리 배포했습니다.</li>
+                  <li><strong>마이그레이션 순서:</strong> 서드파티 → 개발 → 스테이지 → 운영 순서로 진행. 멀티아키텍처 빌드(x86+ARM)로 빌드하여 노드풀 CPU Type 변경만으로 순차 전환하고, 인프라 리소스와 트레이스 로그 기반 모니터링으로 서비스 로직 검증.</li>
+                  <li><strong>Spot 장애 경험:</strong> Spot 비율 100% 설정 시 AWS Interruption으로 드레인 과정에서 Probe 연결 지연 발생. On-demand:Spot 비율을 조정하고, Affinity/TopologySpread 정책으로 On-demand 우선 배포, GracefulShutdown·Probe·PreStop 설정을 어플리케이션/인프라 양쪽에서 동시에 변경하여 해결.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>Karpenter vs Cluster Autoscaler:</strong> 기존 Autoscaler에서 서비스별·언어별 인스턴스 타입이 상이하여 비용 효율적 사용 불가. Karpenter Beta부터 도입 검토 — 빠른 노드 확장, 다양한 인스턴스 활용, NodePool 설계 기반 고성능/비용 효율 노드 확보.</li>
+                  <li><strong>SaaS→OSS 전환:</strong> 일부 기능만 사용하면서 비용이 크게 발생. OSS 전환 시 모니터링·로깅·트레이싱 연관 조회 개선, 비용 절약 규모, 고가용성/확장성 확보 방안을 사전 테스트로 검증하여 경영진 동의 확보.</li>
+                  <li><strong>On-demand:Spot = 1:9:</strong> Spot 100%에서 Interruption 장애 경험 후, 비업무 시간에도 병원 예약·검색 트래픽이 존재하므로 On-demand로 최소 안정성 확보 후 피크타임에 Spot을 최대 활용하는 비율로 결정.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>SaaS → OSS 단계 전환 (Grafana Stack+Thanos, Postman → Hoppscotch 등)</li>
+                  <li>x86 → ARM(Graviton) 이전 + RI/SP 병행 적용</li>
+                  <li>Karpenter 노드풀 설계: API(Spot 리밸런싱 허용) / Kafka Consumer(Spot 격리) / Argo Workflow(On-demand+Spot 분리)</li>
+                  <li>GitHub Reusable Workflow로 CI 표준화</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-cost">인프라 비용 20% 절감</span>
+                  <span class="achievement-tag tag-cost">배포 방식 표준화</span>
+                </div>
+                <span class="contribution-badge">비용 누수 파악부터 월별 트래킹 리포트까지 전 과정 주도</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-2 -->
+          <div class="project-card" id="proj-5-2">
+            <div class="project-header" onclick="toggleProject('proj-5-2')">
+              <h4 class="project-title">Amazon Q 및 AWS 보안 서비스를 활용한 위협 탐지 및 대응 자동화</h4>
+              <span class="project-period">2025</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-security">보안 대응 70%+ 개선</span>
+              <span class="achievement-tag tag-security">API 요청량 20%+ 감소</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>보안 탐지·분석·보고가 수작업 중심이라 대응 리드타임이 길고 누락 위험이 존재. 암호화되지 않은 민감 정보도 존재했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>GuardDuty 튜닝:</strong> 오탐보다는 레거시 서비스의 보안 위반 사례를 대거 발견 — 퍼블릭 S3 엔드포인트 접근, 비허가 IP의 kubectl API 접근 등. 예외 처리가 필요한 케이스를 하나씩 분석·정리. GuardDuty 보고서 최대 90일 제한이므로 매월 데이터를 다운로드하여 별도 리포트로 관리.</li>
+                  <li><strong>WAF 오탐 대응:</strong> Block된 정상 트래픽에 대해 재시도 후 Block 사유 확인, 개발 환경에서는 Allow 시에도 로그를 남겨 오탐 발생 시 예외 처리 Rule/Group 구성. 대외 서비스는 고객사 IP 화이트리스트 + 정책 룰을 탑다운(우선순위) 방식으로 설계.</li>
+                  <li><strong>Secret 마이그레이션:</strong> GitHub 평문 Secret → Parameter Store 전환 시 네이밍 룰을 기획하고, ExternalSecret으로 Parameter Store 값을 불러와 사용. GitHub 평문 Secret 제거 및 권한 분리를 통한 암호화 저장 달성.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>Amazon Q 선택:</strong> 외부 서비스에 보안 데이터를 노출하지 않고 AWS 환경 내에서 처리하기 위해 선택. GuardDuty 내보내기 → S3 저장 → Amazon Q + Lambda 배치로 일간/월간 리포트 자동 생성.</li>
+                  <li><strong>파이프라인 구조:</strong> GuardDuty → 원본 S3 저장 → Amazon Q Lambda → SNS 발송 + 일간/월간 S3 저장</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>GuardDuty→Security Hub→Amazon Q 자동화 파이프라인</li>
+                  <li>WAF 도입 및 오탐 방지 룰 튜닝</li>
+                  <li>Trivy 이미지 스캔 + SonarQube 정적 분석 CI 통합</li>
+                  <li>Helm Secret → Parameter Store(ExternalSecret) 전환</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-security">보안 대응 속도 70%+ 개선</span>
+                  <span class="achievement-tag tag-security">API 전체 요청량 20%+ 감소</span>
+                </div>
+                <span class="contribution-badge">GuardDuty→Security Hub→Amazon Q 파이프라인 설계 및 WAF 룰 튜닝 담당</span>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">아키텍처 — 보안 자동화 파이프라인</p>
+                <div class="diagram-wrap">
+                  <pre class="mermaid">
+flowchart LR
+    GD["GuardDuty\n(위협 탐지)"]
+    SH["Security Hub\n(알림 조건 수립)"]
+    EB["EventBridge\n(이벤트 라우팅)"]
+    S3_RAW["S3\n(원본 데이터)"]
+    LAMBDA["Lambda\n+ Amazon Q\n(AI 분석·요약)"]
+    SNS["SNS\n(발송)"]
+    SLACK["Slack\n(실시간 알림)"]
+    S3_REPORT["S3\n(일간/월간\n리포트)"]
+
+    GD --> SH
+    GD --> S3_RAW
+    SH --> EB
+    EB --> SNS
+    S3_RAW --> LAMBDA
+    LAMBDA --> SNS
+    LAMBDA --> S3_REPORT
+    SNS --> SLACK
+
+    style GD fill:#fee2e2,stroke:#dc2626,color:#000
+    style LAMBDA fill:#dbeafe,stroke:#2563eb,color:#000
+    style SLACK fill:#dcfce7,stroke:#16a34a,color:#000
+    style S3_REPORT fill:#fef3c7,stroke:#d97706,color:#000
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-3 -->
+          <div class="project-card" id="proj-5-3">
+            <div class="project-header" onclick="toggleProject('proj-5-3')">
+              <h4 class="project-title">SLI/SLO 체계 도입 및 서비스 안정성 개선</h4>
+              <span class="project-period">2025</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-performance">SLO 99.9% 3개월 달성</span>
+              <span class="achievement-tag tag-performance">DB 성능 30% 향상</span>
+              <span class="achievement-tag tag-performance">P90 &lt;1s</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>가용성·응답시간 목표가 정량화되지 않아 장애 우선순위 판단과 배포 리스크 관리 기준이 부재했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>비즈니스 메트릭 설계:</strong> 개발팀과 협의하여 접수·예약 완료율 등 핵심 플로우의 정상/비정상 지표를 Counter/Gauge 기반으로 수집. 주요 서비스(예약, 병원 조회) 간 장애 전파를 감지할 수 있는 메트릭 구성.</li>
+                  <li><strong>Slow Query 협업:</strong> Grafana에서 DB 리소스 메트릭에 Warning/Critical 기준 수립, Trace의 MongoDB 쿼리 Span 시간(배치 제외 1초 이상)에 알림 체계 구축. 각 담당자에게 분석 요청 → Index 추가 또는 병목 해소로 해결.</li>
+                  <li><strong>Error Budget:</strong> 소진 시 알림이 담당자에게 전달되어 즉시 분석 체계 가동.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>SLO 목표 수립 과정:</strong> 최초 도입 시 목표를 먼저 세우지 않고 메트릭을 수집. 당시 서비스 안정성 98% → 매월 99% → 99.5% → 99.9%로 단계적으로 목표를 높이며 병목 구간을 개선.</li>
+                  <li><strong>P90 선택 이유:</strong> P99·P95에서 발생하는 노이즈를 줄이기 위해 P90을 기준으로 선택.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>OpenTelemetry 트레이스 + Tempo 기반 비즈니스 메트릭 대시보드 구성</li>
+                  <li>SLI(가용성·P90 응답시간) 정의 및 SLO 99.9% 수립</li>
+                  <li>Error Budget 소진 알림 + 배포 제한 자동화</li>
+                  <li>정기 리뷰 미팅 기반 Slow Query·Query Targeting 개선</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-performance">DB 성능 30% 향상</span>
+                  <span class="achievement-tag tag-performance">P90 응답시간 &lt;1s 달성</span>
+                  <span class="achievement-tag tag-performance">SLO 99.9% 3개월 연속 달성</span>
+                </div>
+                <span class="contribution-badge">SLI 지표 정의, Grafana 대시보드 구축, 월간 정기 미팅 및 쿼리 최적화 협업 주도</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-4 -->
+          <div class="project-card" id="proj-5-4">
+            <div class="project-header" onclick="toggleProject('proj-5-4')">
+              <h4 class="project-title">Terraform Cloud 기반 IaC 도입 및 인프라 형상관리 체계 구축</h4>
+              <span class="project-period">2024</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-infra">수동 설정 오류 제거</span>
+              <span class="achievement-tag tag-infra">환경 일관성 확보</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>콘솔 수작업 중심 운영으로 변경 이력 추적이 어렵고, 환경 간 인프라 형상 불일치가 반복 발생했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>TFC 선택:</strong> Free Tier로 현재 규모에 충분. GitHub Actions + S3/DynamoDB 구성에서 데드락 이슈가 있었고, TFC는 UI를 통한 리소스 목록/제어와 클라우드 기반 State 관리를 제공.</li>
+                  <li><strong>TFC → GitHub + S3 전환:</strong> TFC 가격 정책 변경 후 GitHub + S3 기반 배포 시스템으로 변경. 기존 TFC 리소스를 그대로 사용할 수 있게 구성하고, AWS AccessKey → OIDC 인증으로 보안 강화.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>AWS 리소스 전체 Terraform 코드화·모듈화</li>
+                  <li>환경/서비스별 Workspace 분리 관리</li>
+                  <li>EKS IRSA 모듈화로 IAM 권한 코드 정의</li>
+                  <li>TFC → GitHub + S3 + OIDC 기반 배포 시스템 전환</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-infra">인프라 수동 설정 오류 제거</span>
+                  <span class="achievement-tag tag-infra">환경별 형상 일관성 확보</span>
+                  <span class="achievement-tag tag-infra">신규 서비스 배포 환경 구성 신속화</span>
+                </div>
+                <span class="contribution-badge">Terraform 설계·모듈화, Workspace 구성, CI/CD 파이프라인 연동 전 과정 주도</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-5 -->
+          <div class="project-card" id="proj-5-5">
+            <div class="project-header" onclick="toggleProject('proj-5-5')">
+              <h4 class="project-title">통합 Observability 체계 구축</h4>
+              <span class="project-period">2023–2024</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-cost">Observability 비용 70% 절감</span>
+              <span class="achievement-tag tag-opensource">Grafana 대시보드 20+</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>모니터링·로깅·트레이싱 도구가 분산되어 장애 원인 추적이 지연. 각기 다른 SaaS 서비스를 사용하면서 연관 분석이 어렵고 비용도 증가했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>SaaS→OSS 전환:</strong> Datadog의 많은 기능을 사용하지 않으면서 비용이 크게 발생. 로그·트레이싱·인프라 리소스가 파편화되어 통합 옵저버빌리티를 구성하고자 전환 결정.</li>
+                  <li><strong>데이터 복구:</strong> S3 생명주기 정책으로 원하는 시점의 데이터 복구가 가능해진 것도 OSS 전환의 장점.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>Loki 선택:</strong> 기존 OpenSearch에서 전환. 통합 옵저버빌리티를 위해 Grafana Stack으로 통일.</li>
+                  <li><strong>Alloy 선택:</strong> 기존 Fluent-bit Config를 참고하여 Alloy Config로 전환. Promtail은 추가 유지보수가 중단되어 Alloy 선택.</li>
+                  <li><strong>Tempo 선택:</strong> Loki와 동일한 사유 — Grafana Stack 통합 및 유지보수 지속성.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">팀 도입</p>
+                <p>SaaS 종료 전 개발 환경을 먼저 OSS로 전환하여 대시보드·메트릭·알림 체계를 사전 정의. 운영 환경 이관 시 큰 문제 없이 전환 완료. 개발자 대시보드 구성은 DevOps에서 제공 (서비스 트레이스 상세, 로그 디버그, SLO 지표 등).</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>Alloy 단일 수집 에이전트: Loki(로그)·Tempo(트레이스)·Thanos Remote Write(메트릭)</li>
+                  <li>Prometheus + Thanos 멀티 클러스터 메트릭 통합</li>
+                  <li>Grafana Correlation 대시보드 구성</li>
+                  <li>K8s·Kafka·DB·어플리케이션 통합 대시보드 20+ 및 알림 체계</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-opensource">팀 공통 관제 지표 확보</span>
+                  <span class="achievement-tag tag-cost">Observability 비용 70% 절감(SaaS 대비)</span>
+                </div>
+                <span class="contribution-badge">Alloy 파이프라인, Grafana 대시보드 20+ 설계, 알림 채널·임계값 정의, 팀별 온보딩 가이드 작성 주도</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-6 -->
+          <div class="project-card" id="proj-5-6">
+            <div class="project-header" onclick="toggleProject('proj-5-6')">
+              <h4 class="project-title">EKS 무중단 업데이트 전략 수립 — Blue-Green → Multi-Target</h4>
+              <div class="project-meta">
+                <span class="project-period">2023–2025</span>
+                <a href="https://boostbrothers.github.io/2025-04-07-devops-eks-new-upgrade" class="project-ref-link" target="_blank" rel="noopener noreferrer">기술블로그</a>
+                <a href="https://boostbrothers.github.io/2023-07-16-infra-eks-update" class="project-ref-link" target="_blank" rel="noopener noreferrer">기술블로그</a>
+              </div>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-performance">10시간 → 5분</span>
+              <span class="achievement-tag tag-performance">즉시 롤백 체계</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>인플레이스 업그레이드의 롤백 제약으로 장애 발생 시 복구 지연과 서비스 중단 위험이 상존했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>Multi-Target 방식 전환 — 신/구 클러스터 동시 유지, Route53/ALB 가중치로 트래픽 10%→50%→100% 점진 전환</li>
+                  <li>DNS TTL 최소화, ALB 타깃 전환 시나리오 사전 설계 — 문제 시 가중치 0%로 즉시 롤백</li>
+                  <li>매니지먼트 계정 ArgoCD 기반 멀티 클러스터 배포 일관성 확보</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">의사결정</p>
+                <ul>
+                  <li><strong>In-place 방식의 롤백 불가 한계:</strong> Multi-Target 전환 결정</li>
+                  <li>API 호환성·add-on 버전 사전 검증 후 순차 적용</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-performance">업데이트 10시간 → 5분</span>
+                  <span class="achievement-tag tag-performance">즉시 롤백 체계 확보</span>
+                </div>
+                <span class="contribution-badge">K8s·EKS 버전 API 호환성 검증, add-on·3rd-party Chart 순차 업데이트 검증, Terraform IRSA 모듈 구성 담당</span>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">아키텍처 — EKS Multi-Target 업데이트 흐름</p>
+                <div class="diagram-wrap">
+                  <pre class="mermaid">
+flowchart LR
+    User["사용자"]
+    R53["Route 53\n(DNS)"]
+    CF["CloudFront\n(CDN)"]
+    ALB["ALB\n(가중치 라우팅)"]
+    TG_OLD["타깃 그룹 A\n기존 EKS 클러스터\nv1.29"]
+    TG_NEW["타깃 그룹 B\n신규 EKS 클러스터\nv1.31"]
+
+    User --> R53
+    R53 --> CF
+    CF --> ALB
+    ALB -- "90% → 50% → 0%" --> TG_OLD
+    ALB -- "10% → 50% → 100%" --> TG_NEW
+
+    style TG_OLD fill:#fef3c7,stroke:#d97706,color:#000
+    style TG_NEW fill:#dcfce7,stroke:#16a34a,color:#000
+    style ALB fill:#dbeafe,stroke:#2563eb,color:#000
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div><!-- /company-projects -->
+        </div>
+        <!-- /비브로스 -->
+
+        <!-- ── Cloit ── -->
+        <div class="company-block" id="company-cloit">
+          <div class="company-header">
+            <img src="assets/cloit-icon.png" alt="Cloit 로고" class="company-icon">
+            <h3 class="company-name">Cloit <span class="company-desc">멀티 클라우드 매니지드 서비스(MSP) 및 AI 솔루션 전문 기업</span></h3>
+          </div>
+          <p class="company-meta">Cloud Engineer · 선임 &nbsp;|&nbsp; 2022.07 ~ 2022.12</p>
+          <p class="company-env">AWS/Naver Cloud 설계·구축 · NKS/EKS 마이그레이션 · CSP 제약 분석 및 OSS 대안 설계 · K8s 기술 교육 및 사내 표준화</p>
+
+          <button class="company-show-toggle" onclick="toggleCompany('company-cloit')">
+            <span class="toggle-text">프로젝트 접기</span> ▾
+          </button>
+          <div class="company-projects">
+          <!-- 5-7 -->
+          <div class="project-card" id="proj-5-7">
+            <div class="project-header" onclick="toggleProject('proj-5-7')">
+              <h4 class="project-title">IBK 기업은행 Naver Cloud Hybrid Infra 구축</h4>
+              <div class="project-meta">
+                <span class="project-period">2022.08–2022.12</span>
+                <a href="https://www.epnc.co.kr/news/articleView.html?idxno=231779" class="project-ref-link" target="_blank" rel="noopener noreferrer">기사</a>
+              </div>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-infra">레거시 → K8s 클라우드 전환</span>
+              <span class="achievement-tag tag-infra">MSA 기반 마련</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>레거시 DR 환경의 확장성과 운영 자동화 한계로 공공/프라이빗 클라우드 기반 전환이 요구되었습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>Squid Proxy 설계:</strong> 내부망에서 Naver Console 접근 시 외부망 도메인을 화이트리스트 기반으로 인터넷에 연결해야 했음. 특정 관리 유저만 접근하므로 화이트리스트 기반 Squid Proxy로 구성.</li>
+                  <li><strong>컨테이너 이미지 공유:</strong> 각 업무망 간 통신 가능/불가 구간이 혼재하여 Nexus를 각 망에 구성하고 미러링으로 이미지 공유.</li>
+                  <li><strong>네이버 클라우드 제약:</strong> 프라이빗 이미지 저장소, 프라이빗 도메인 등 미지원 기능을 오픈소스로 대체.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>Naver Private Cloud(Neurocloud) 기반 NKS 인프라 설계·마이그레이션</li>
+                  <li>Link-Local IP 제약 → Squid/Socat Proxy 우회 경로 설계</li>
+                  <li>Velero 백업 전략·운영 가이드 작성</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-infra">레거시 → K8s 클라우드 전환</span>
+                  <span class="achievement-tag tag-infra">도메인 단위 격리로 MSA 기반 마련</span>
+                </div>
+                <span class="contribution-badge">PL 1명, SA 2명(본인 SA) — Proxy 우회 설계, Velero 백업 전략 수립, 운영 매뉴얼 작성 담당</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-8 -->
+          <div class="project-card" id="proj-5-8">
+            <div class="project-header" onclick="toggleProject('proj-5-8')">
+              <h4 class="project-title">쿠버네티스 표준 운영 가이드 구성 및 기술 역량 내재화 교육</h4>
+              <span class="project-period">2022.06–2022.07</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-opensource">K8s 교육 내재화</span>
+              <span class="achievement-tag tag-opensource">CNCF 운영 가이드라인 수립</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>SA·AA 대상 K8s 교육 자료 구성 및 CNCF 오픈소스 PoC (ArgoCD, Istio, Prometheus 등)</li>
+                  <li>외부 프로젝트 PoC 기술 지원으로 실서비스 적용 가능성 검증</li>
+                  <li>PoC 기반 사내 K8s 운영 가이드라인 표준화·문서화</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-opensource">사내 K8s 교육 콘텐츠 내재화</span>
+                  <span class="achievement-tag tag-opensource">CNCF 오픈소스 운영 가이드라인 수립</span>
+                </div>
+                <span class="contribution-badge">교육 자료 설계, CNCF PoC 수행, 운영 가이드 문서화 주도</span>
+              </div>
+            </div>
+          </div>
+          </div><!-- /company-projects -->
+        </div>
+        <!-- /Cloit -->
+
+        <!-- ── OSC Korea ── -->
+        <div class="company-block" id="company-osc">
+          <div class="company-header">
+            <img src="assets/osckorea-icon.png" alt="OSC Korea 로고" class="company-icon">
+            <h3 class="company-name">OSC Korea <span class="company-desc">오픈소스·클라우드·AI 네이티브 기술 전문 기업</span></h3>
+          </div>
+          <p class="company-meta">DevOps Engineer &nbsp;|&nbsp; 2021.03 ~ 2022.06</p>
+          <p class="company-env">CNCF 오픈소스 리서치·기술 검증 · 온프레미스·프라이빗 클라우드 설계 · GitOps · API GW · Service Mesh</p>
+
+          <button class="company-show-toggle" onclick="toggleCompany('company-osc')">
+            <span class="toggle-text">프로젝트 접기</span> ▾
+          </button>
+          <div class="company-projects">
+          <!-- 5-9 -->
+          <div class="project-card" id="proj-5-9">
+            <div class="project-header" onclick="toggleProject('proj-5-9')">
+              <h4 class="project-title">NS홈쇼핑 Outer 인프라 설계 및 구축</h4>
+              <span class="project-period">2022.02–2022.06</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-infra">레거시 → K8s 전환</span>
+              <span class="achievement-tag tag-infra">결제·장바구니 장애 격리</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>Istio 서킷브레이커:</strong> 실패 요청량 기반으로 서킷브레이커를 구성. 장바구니→결제 플로우에서 결제 실패 시에도 사용자가 정상 응답을 받을 수 있도록 격리.</li>
+                  <li><strong>Kong API Gateway:</strong> RateLimit + JWT 토큰 인증 도입. 내/외부 Gateway 분리 — 내부 서비스는 신뢰 기반 통신, 외부 서비스는 mTLS 기반 제로 트러스트 구성.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>VMware + Rancher 오케스트레이션, HAProxy/Keepalived 이중화·SSL Termination</li>
+                  <li>Istio Service Mesh(서킷브레이커·타임아웃) 장애 격리</li>
+                  <li>Prometheus/EFK/Velero 단일 스택 관제·로깅·백업 통합</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-infra">레거시 → K8s 환경 전환</span>
+                  <span class="achievement-tag tag-infra">결제·장바구니 도메인 장애 격리</span>
+                </div>
+                <span class="contribution-badge">PM 1명, Dev 3명, AA 1명, SA 2명, TA 1명(본인 SA) — Istio 정책 설계, Kong 라우팅 룰 정의, Prometheus/EFK/Velero 구성 담당</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-10 -->
+          <div class="project-card" id="proj-5-10">
+            <div class="project-header" onclick="toggleProject('proj-5-10')">
+              <h4 class="project-title">AIMS(Solum) Outer 인프라 설계 및 구축</h4>
+              <span class="project-period">2021.06–2021.12</span>
+              <span class="project-toggle">&#8963;</span>
+            </div>
+            <div class="project-summary">
+              <span class="achievement-tag tag-performance">배치 처리시간 45% 단축</span>
+              <span class="achievement-tag tag-infra">K8s·DB 통합 모니터링</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>배치 45% 단축:</strong> 기존 직렬 배치 작업을 K8s 기반 MQ로 병렬 처리 전환. Grafana 대시보드로 Disk IOPS·Queue Depth 등 병목 구간을 모니터링하여 어플리케이션/MQ 리소스를 조정하며 최적화.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>RKE2 + Rancher 기반 K8s 인프라, GitOps Blue-Green 배포</li>
+                  <li>Kong/Keycloak, RabbitMQ HA, DB HA 구조 설계·검증</li>
+                  <li>Prometheus/EFK/Jaeger/Kiali 관측 체계, Grafana 통합 대시보드</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">성과</p>
+                <div style="display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:0.5rem;">
+                  <span class="achievement-tag tag-infra">K8s·DB 통합 모니터링 제공</span>
+                  <span class="achievement-tag tag-performance">배치 처리시간 45% 단축</span>
+                </div>
+                <span class="contribution-badge">PM 1명, SA 3명, AA 2명(본인 SA) — RKE2 클러스터 설계·구축, Probe·GracefulShutdown 검증 주도, 성능 테스트용 대시보드 설계</span>
+              </div>
+            </div>
+          </div>
+          </div><!-- /company-projects -->
+        </div>
+        <!-- /OSC Korea -->
+
+        <!-- ── 한림대학교 연구실 ── -->
+        <div class="company-block" id="company-hallim">
+          <div class="company-header no-toggle">
+            <h3 class="company-name">한림대학교 의학유전학 연구실</h3>
+          </div>
+          <p class="company-meta">System Engineer &nbsp;|&nbsp; 2020.05 ~ 2020.12</p>
+          <p class="company-env">연구 데이터 서버 운영 및 유지보수, 서버실 안정성 관리</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         Certifications / Education / Awards
+         ============================================================ -->
+    <section id="certifications" class="section-animate">
+      <div class="container">
+        <h2 class="section-title">🏆 Certifications · Education · Awards</h2>
+        <hr class="section-divider">
+        <div class="bottom-grid">
+          <!-- Certifications -->
+          <div class="bottom-card">
+            <h3 class="bottom-card-title">자격증</h3>
+            <div class="cert-item">
+              <p class="cert-name">AWS Solutions Architect Associate</p>
+              <p class="cert-date">2022.07</p>
+            </div>
+            <div class="cert-item">
+              <p class="cert-name">AWS Cloud Practitioner</p>
+              <p class="cert-date">2022.07</p>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="bottom-card">
+            <h3 class="bottom-card-title">학력</h3>
+            <div class="edu-item">
+              <p class="edu-school">한림대학교</p>
+              <p class="edu-major">융합소프트웨어학과 / ICT융합전공(복수)</p>
+              <p class="edu-period">2015.03 ~ 2021.02</p>
+            </div>
+          </div>
+
+          <!-- Awards -->
+          <div class="bottom-card">
+            <h3 class="bottom-card-title">수상</h3>
+            <div class="award-item">
+              <p class="award-name">해커톤 대회 금상</p>
+              <p class="award-org">한림대학교 SW 중심대학사업</p>
+            </div>
+            <div class="award-item">
+              <p class="award-name">오픈소스 SW 경진대회 금상</p>
+              <p class="award-org">한림대학교 SW 중심대학사업</p>
+            </div>
+            <div class="award-item">
+              <p class="award-name">창업 아이디어 은상</p>
+              <p class="award-org">한림대학교 창업교육센터</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2026 박진홍 · DevOps Engineer</p>
+    <p style="margin-top:0.5rem;">
+      <a href="https://github.com/95jinhong" target="_blank" rel="noopener noreferrer">GitHub</a>
+      &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/devopsengineer-jinhongpark" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </p>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+       ============================================================ -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      themeVariables: {
+        fontFamily: "'Noto Sans KR', 'Inter', sans-serif",
+        fontSize: '13px'
+      },
+      flowchart: {
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  </script>
+
+  <script>
+    // Toggle project accordion
+    function toggleProject(id) {
+      const card = document.getElementById(id);
+      card.classList.toggle('open');
+    }
+
+    // Toggle company accordion
+    function toggleCompany(companyId) {
+      const block = document.getElementById(companyId);
+      if (!block) return;
+      block.classList.toggle('collapsed');
+
+      const btn = block.querySelector('.company-show-toggle');
+      if (btn) {
+        const textEl = btn.querySelector('.toggle-text');
+        if (block.classList.contains('collapsed')) {
+          textEl.textContent = '전체 보기';
+          btn.lastChild.textContent = ' ▸';
+        } else {
+          textEl.textContent = '프로젝트 접기';
+          btn.lastChild.textContent = ' ▾';
+        }
+      }
+    }
+
+    // IntersectionObserver for nav active state
+    (function() {
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+      const navObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(function(link) {
+              if (link.dataset.section === id) {
+                link.classList.add('active');
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, {
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(function(section) {
+        navObserver.observe(section);
+      });
+    })();
+
+    // IntersectionObserver for section fade-up animations
+    (function() {
+      const animatedSections = document.querySelectorAll('.section-animate');
+
+      const fadeObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        rootMargin: '0px 0px -10% 0px',
+        threshold: 0.05
+      });
+
+      animatedSections.forEach(function(section) {
+        fadeObserver.observe(section);
+      });
+    })();
+  </script>
+
+</body>
+</html>
