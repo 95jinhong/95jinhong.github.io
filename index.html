@@ -20,11 +20,12 @@
        CSS Custom Properties — Soft Pastel
        ============================================================ */
     :root {
-      --color-bg: #ffffff;
-      --color-bg-alt: #f8f9fc;
+      --color-bg: #f7f5f2;
+      --color-bg-alt: #f0ede9;
       --color-bg-card: #ffffff;
       --color-text: #2d3748;
       --color-text-sub: #718096;
+      --color-text-muted: #718096;
       --color-primary: #6366f1;
       --color-primary-dark: #4f46e5;
       --color-primary-light: #eef2ff;
@@ -38,6 +39,22 @@
       --max-width: 860px;
       --section-gap: 4rem;
       --card-padding: 1.5rem;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #1e1f2e;
+      --color-bg-alt: #252638;
+      --color-bg-card: #2a2b3d;
+      --color-text: #dde1f0;
+      --color-text-sub: #9ba3c4;
+      --color-text-muted: #9ba3c4;
+      --color-primary: #a5b4fc;
+      --color-primary-dark: #c7d2fe;
+      --color-primary-light: #2e3158;
+      --color-border: #3a3d5c;
+      --color-accent-bg: #1e2f2a;
+      --color-accent-text: #86efac;
+      --color-divider: #3a3d5c;
     }
 
     /* ============================================================
@@ -60,6 +77,7 @@
       line-height: 1.8;
       color: var(--color-text);
       background: var(--color-bg);
+      transition: background 0.3s, color 0.3s;
     }
 
     img {
@@ -143,6 +161,121 @@
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--color-border);
       box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    [data-theme="dark"] .sticky-nav {
+      background: rgba(30, 31, 46, 0.95);
+    }
+
+    [data-theme="dark"] .profile-emoji {
+      background: #2e3158;
+    }
+
+    [data-theme="dark"] .profile-career-badge {
+      background: #3a3d5c;
+      color: #c7d2fe;
+    }
+
+    [data-theme="dark"] .about-skill-tag {
+      background: #2e3158;
+      border-color: #4a4f7a;
+      color: #c7d2fe;
+    }
+
+    [data-theme="dark"] .about-highlight {
+      background: #252638;
+      border-left-color: #a5b4fc;
+    }
+
+    /* 다크모드 — 주요 역량 카드 */
+    [data-theme="dark"] .whatido-card:nth-child(1) { background: #252745; border-color: #4a4f7a; }
+    [data-theme="dark"] .whatido-card:nth-child(2) { background: #2e2a1e; border-color: #6b5e2a; }
+    [data-theme="dark"] .whatido-card:nth-child(3) { background: #1a2e28; border-color: #2d5a48; }
+    [data-theme="dark"] .whatido-card:nth-child(4) { background: #1e2a3a; border-color: #2d4a6b; }
+
+    [data-theme="dark"] .whatido-title { color: #e8ecf8; }
+    [data-theme="dark"] .whatido-desc  { color: #b0bad8; }
+
+    [data-theme="dark"] .profile-tagline {
+      color: #c4c9e0;
+    }
+
+    /* 다크모드 — 프로젝트 본문 */
+    [data-theme="dark"] .project-body p,
+    [data-theme="dark"] .project-body li {
+      color: #a0aac0;
+    }
+    [data-theme="dark"] .project-body strong {
+      color: #c7d2fe;
+      font-weight: 700;
+    }
+    [data-theme="dark"] .project-section-title {
+      color: #a5b4fc;
+    }
+    [data-theme="dark"] .contribution-badge {
+      color: #a0aac0;
+    }
+    [data-theme="dark"] .achievement-tag {
+      background: #252638;
+      color: #9ba3c4;
+      border-color: #3a3d5c;
+    }
+
+    /* 다크모드 — 본문 강조 (kpi-highlight, strong) 통일 */
+    [data-theme="dark"] .kpi-highlight,
+    [data-theme="dark"] .project-body strong {
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    /* 다크모드 — 기술블로그·기사 링크 */
+    [data-theme="dark"] .project-ref-link {
+      color: #cbd5e1;
+      background: #2d3748;
+      border-color: #4a5568;
+    }
+    [data-theme="dark"] .project-ref-link:hover {
+      background: #4a5568;
+      color: #f1f5f9;
+    }
+
+    /* 다크모드 — 섹션 타이틀 */
+    [data-theme="dark"] .section-title { color: #e8ecf8; }
+    [data-theme="dark"] .section-divider { border-color: #3a3d5c; }
+
+    /* 다크모드 — 자격증·학력·수상 카드 */
+    [data-theme="dark"] .bottom-card {
+      background: #2a2b3d;
+      border-color: #3a3d5c;
+    }
+    [data-theme="dark"] .bottom-card-title { color: #c7d2fe; }
+    [data-theme="dark"] .cert-name,
+    [data-theme="dark"] .edu-school,
+    [data-theme="dark"] .award-name { color: #e8ecf8; }
+    [data-theme="dark"] .cert-date,
+    [data-theme="dark"] .edu-major,
+    [data-theme="dark"] .edu-period,
+    [data-theme="dark"] .award-org { color: #9ba3c4; }
+
+    /* 다크모드 — 경력 카드 */
+    [data-theme="dark"] .company-name { color: #e8ecf8; }
+    [data-theme="dark"] .company-desc { color: #9ba3c4; }
+    [data-theme="dark"] .project-card {
+      background: #2a2b3d;
+      border-color: #3a3d5c;
+    }
+    [data-theme="dark"] .project-title { color: #c7d2fe; }
+    [data-theme="dark"] .project-summary { color: #b0bad8; }
+    [data-theme="dark"] .role-tag {
+      background: #2e3158;
+      color: #c7d2fe;
+      border-color: #4a4f7a;
+    }
+    [data-theme="dark"] .project-tag {
+      background: #252638;
+      color: #9ba3c4;
+      border-color: #3a3d5c;
     }
 
     .nav-inner {
@@ -204,6 +337,43 @@
       opacity: 1;
     }
 
+    .nav-spacer {
+      flex: 1;
+    }
+
+    .theme-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      border: 1.5px solid var(--color-border);
+      background: var(--color-bg-card);
+      color: var(--color-text-sub);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--color-primary-light);
+      border-color: var(--color-primary);
+      color: var(--color-primary-dark);
+    }
+
+    .theme-toggle svg {
+      width: 16px;
+      height: 16px;
+      pointer-events: none;
+    }
+
+    .theme-toggle .icon-sun  { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+
+    [data-theme="dark"] .theme-toggle .icon-sun  { display: block; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
     /* ============================================================
        Profile Header
        ============================================================ */
@@ -216,7 +386,7 @@
       border: 1.5px solid var(--color-border);
       border-radius: 1.25rem;
       padding: 2rem 2.25rem;
-      box-shadow: 0 4px 24px rgba(99, 102, 241, 0.07);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 1px 4px rgba(0, 0, 0, 0.04);
     }
 
     .profile-header-row {
@@ -385,13 +555,13 @@
       background: var(--color-bg-card);
       border: 1.5px solid var(--color-border);
       border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .whatido-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
     .whatido-card:nth-child(1) { background: #eef2ff; }
@@ -532,7 +702,7 @@
       background: var(--color-bg-card);
       border: 1.5px solid var(--color-border);
       border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
       margin-bottom: 1.25rem;
       transition: transform 0.2s, box-shadow 0.2s;
     }
@@ -543,7 +713,7 @@
 
     .project-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
     .project-card.open {
@@ -742,14 +912,14 @@
       background: var(--color-bg-card);
       border: 1.5px solid var(--color-border);
       border-radius: var(--radius);
-      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
       padding: var(--card-padding);
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .bottom-card:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
     .bottom-card-title {
@@ -946,6 +1116,25 @@
       <a href="#competencies" class="nav-link" data-section="competencies">역량</a>
       <a href="#experience" class="nav-link" data-section="experience">경력</a>
       <a href="#certifications" class="nav-link" data-section="certifications">자격증</a>
+      <span class="nav-spacer"></span>
+      <button class="theme-toggle" id="themeToggle" aria-label="명암 모드 전환">
+        <!-- 달 아이콘 (라이트 모드일 때 표시) -->
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+        <!-- 태양 아이콘 (다크 모드일 때 표시) -->
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+      </button>
     </div>
   </nav>
 
@@ -1451,30 +1640,6 @@
                   <li><span class="kpi-highlight">업데이트 소요 시간 10h → 5min으로 단축</span> — Blue-Green에서 Multi-Target(ALB 가중치 점진 전환) 방식으로 전환하여 달성</li>
                 </ul>
               </div>
-              <div class="project-section">
-                <p class="project-section-title">아키텍처 — EKS Multi-Target 업데이트 흐름</p>
-                <div class="diagram-wrap">
-                  <pre class="mermaid">
-flowchart LR
-    User["사용자"]
-    R53["Route 53\n(DNS)"]
-    CF["CloudFront\n(CDN)"]
-    ALB["ALB\n(가중치 라우팅)"]
-    TG_OLD["타깃 그룹 A\n기존 EKS 클러스터\nv1.29"]
-    TG_NEW["타깃 그룹 B\n신규 EKS 클러스터\nv1.31"]
-
-    User --> R53
-    R53 --> CF
-    CF --> ALB
-    ALB -- "90% → 50% → 0%" --> TG_OLD
-    ALB -- "10% → 50% → 100%" --> TG_NEW
-
-    style TG_OLD fill:#fef3c7,stroke:#d97706,color:#000
-    style TG_NEW fill:#dcfce7,stroke:#16a34a,color:#000
-    style ALB fill:#dbeafe,stroke:#2563eb,color:#000
-                  </pre>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1769,6 +1934,27 @@ flowchart LR
   </script>
 
   <script>
+    // ── 다크모드 토글 ──
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const btn = document.getElementById('themeToggle');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    });
+
     // Toggle project accordion
     function toggleProject(id) {
       const card = document.getElementById(id);
