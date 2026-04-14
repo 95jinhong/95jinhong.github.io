@@ -8,7 +8,13 @@
   <meta property="og:description" content="안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://95jinhong.github.io">
-  <meta name="theme-color" content="#2563eb">
+  <meta property="og:image" content="https://95jinhong.github.io/assets/og-thumbnail.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="박진홍 | DevOps Engineer Portfolio">
+  <meta name="twitter:description" content="안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer">
+  <link rel="canonical" href="https://95jinhong.github.io">
+  <meta name="theme-color" content="#6366f1">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧑‍💻</text></svg>">
   <title>박진홍 | DevOps Engineer</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -851,6 +857,12 @@
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
+      width: 100%;
+      background: none;
+      border: none;
+      font: inherit;
+      color: inherit;
+      text-align: left;
     }
 
     .project-header:hover .project-title {
@@ -1218,22 +1230,50 @@
     /* ============================================================
        Print
        ============================================================ */
+    @page {
+      margin: 15mm 12mm;
+      size: A4;
+    }
+
     @media print {
       * { box-shadow: none !important; border-color: #ccc !important; }
       body { font-size: 12px; color: #000; background: #fff; }
-      .sticky-nav, .no-print { display: none !important; }
+      .sticky-nav, .no-print, .skip-nav { display: none !important; }
       .project-card { break-inside: avoid; }
       a { color: #000; text-decoration: underline; }
       a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; }
       .project-body { display: block !important; }
       .project-toggle { display: none; }
+      .company-projects { display: block !important; max-height: none !important; overflow: visible !important; }
+      .company-show-toggle { display: none !important; }
       .whatido-grid { display: block; }
       .whatido-card { margin-bottom: 0.5rem; background: #fff !important; }
       .section-animate { opacity: 1 !important; transform: none !important; }
     }
+
+    /* Skip Navigation */
+    .skip-nav {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--color-primary);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.875rem;
+      z-index: 1001;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-nav:focus {
+      top: 0;
+    }
   </style>
 </head>
 <body>
+  <a href="#about" class="skip-nav">본문 바로가기</a>
 
   <!-- ============================================================
        Sticky Nav
@@ -1491,13 +1531,13 @@
           <div class="company-projects">
           <!-- 5-7b AI 간식대장 -->
           <div class="project-card open" id="proj-5-7b">
-            <div class="project-header" onclick="toggleProject('proj-5-7b')">
+            <button class="project-header" onclick="toggleProject('proj-5-7b')" aria-expanded="true" aria-controls="proj-5-7b-body">
               <h4 class="project-title">AI 활용 사내 서비스 구축 (구멍가게24)</h4>
               <div class="project-meta">
                 <span class="project-period">2026.03</span>
               </div>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-infra">MVP 구축</span>
               <span class="achievement-tag tag-opensource">Claude 프롬프트 설계</span>
@@ -1532,13 +1572,13 @@
 
           <!-- 5-7a Proxmox -->
           <div class="project-card" id="proj-5-7a">
-            <div class="project-header" onclick="toggleProject('proj-5-7a')">
+            <button class="project-header" onclick="toggleProject('proj-5-7a')" aria-expanded="false" aria-controls="proj-5-7a-body">
               <h4 class="project-title">사내 Proxmox 가상화 플랫폼 도입</h4>
               <div class="project-meta">
                 <span class="project-period">2026.01 ~ 2026.02</span>
               </div>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-infra">하이퍼바이저 > KVM 변경</span>
               <span class="achievement-tag tag-infra">서버 확장 개선</span>
@@ -1581,14 +1621,14 @@
 
           <!-- 5-1 -->
           <div class="project-card" id="proj-5-1">
-            <div class="project-header" onclick="toggleProject('proj-5-1')">
+            <button class="project-header" onclick="toggleProject('proj-5-1')" aria-expanded="false" aria-controls="proj-5-1-body">
               <h4 class="project-title">인프라 아키텍처 고도화 및 비용 절감</h4>
               <div class="project-meta">
                 <span class="project-period">2025</span>
                 <a href="https://boostbrothers.github.io/2023-11-01-infra-karpenter-migration" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기술블로그 ↗</a>
               </div>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-cost">비용 20% 절감</span>
               <span class="achievement-tag tag-cost">ARM(Graviton) 이전</span>
@@ -1636,11 +1676,11 @@
 
           <!-- 5-2 -->
           <div class="project-card" id="proj-5-2">
-            <div class="project-header" onclick="toggleProject('proj-5-2')">
+            <button class="project-header" onclick="toggleProject('proj-5-2')" aria-expanded="false" aria-controls="proj-5-2-body">
               <h4 class="project-title">Amazon Q 및 AWS 보안 서비스를 활용한 위협 탐지 및 대응 자동화</h4>
               <span class="project-period">2025</span>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-security">보안 대응 70%+ 개선</span>
               <span class="achievement-tag tag-security">API 요청량 20%+ 감소</span>
@@ -1687,11 +1727,11 @@
 
           <!-- 5-3 -->
           <div class="project-card" id="proj-5-3">
-            <div class="project-header" onclick="toggleProject('proj-5-3')">
+            <button class="project-header" onclick="toggleProject('proj-5-3')" aria-expanded="false" aria-controls="proj-5-3-body">
               <h4 class="project-title">SLI/SLO 체계 도입 및 서비스 안정성 개선</h4>
               <span class="project-period">2025</span>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-performance">SLO 99.9% 3개월 달성</span>
               <span class="achievement-tag tag-performance">DB 성능 30% 향상</span>
@@ -1739,11 +1779,11 @@
 
           <!-- 5-4 -->
           <div class="project-card" id="proj-5-4">
-            <div class="project-header" onclick="toggleProject('proj-5-4')">
+            <button class="project-header" onclick="toggleProject('proj-5-4')" aria-expanded="false" aria-controls="proj-5-4-body">
               <h4 class="project-title">Terraform Cloud 기반 IaC 도입 및 인프라 형상관리 체계 구축</h4>
               <span class="project-period">2024</span>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-infra">수동 설정 오류 제거</span>
               <span class="achievement-tag tag-infra">환경 일관성 확보</span>
@@ -1778,11 +1818,11 @@
 
           <!-- 5-5 -->
           <div class="project-card" id="proj-5-5">
-            <div class="project-header" onclick="toggleProject('proj-5-5')">
+            <button class="project-header" onclick="toggleProject('proj-5-5')" aria-expanded="false" aria-controls="proj-5-5-body">
               <h4 class="project-title">통합 Observability 체계 구축</h4>
               <span class="project-period">2023–2024</span>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-cost">Observability 비용 70% 절감</span>
               <span class="achievement-tag tag-opensource">Grafana 대시보드 20+</span>
@@ -1833,15 +1873,15 @@
 
           <!-- 5-6 -->
           <div class="project-card" id="proj-5-6">
-            <div class="project-header" onclick="toggleProject('proj-5-6')">
+            <button class="project-header" onclick="toggleProject('proj-5-6')" aria-expanded="false" aria-controls="proj-5-6-body">
               <h4 class="project-title">EKS 무중단 업데이트 전략 수립 — Blue-Green → Multi-Target</h4>
               <div class="project-meta">
                 <span class="project-period">2023–2025</span>
                 <a href="https://boostbrothers.github.io/2025-04-07-devops-eks-new-upgrade" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기술블로그 ↗</a>
                 <a href="https://boostbrothers.github.io/2023-07-16-infra-eks-update" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기술블로그 ↗</a>
               </div>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-performance">10시간 → 5분</span>
               <span class="achievement-tag tag-performance">즉시 롤백 체계</span>
@@ -1895,14 +1935,14 @@
           <div class="company-projects">
           <!-- 5-7 -->
           <div class="project-card" id="proj-5-7">
-            <div class="project-header" onclick="toggleProject('proj-5-7')">
+            <button class="project-header" onclick="toggleProject('proj-5-7')" aria-expanded="false" aria-controls="proj-5-7-body">
               <h4 class="project-title">IBK 기업은행 Naver Cloud Hybrid Infra 구축</h4>
               <div class="project-meta">
                 <span class="project-period">2022.08–2022.12</span>
                 <a href="https://www.epnc.co.kr/news/articleView.html?idxno=231779" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기사 ↗</a>
               </div>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-infra">레거시 → K8s 클라우드 전환</span>
               <span class="achievement-tag tag-infra">MSA 기반 마련</span>
@@ -1937,11 +1977,11 @@
 
           <!-- 5-8 -->
           <div class="project-card" id="proj-5-8">
-            <div class="project-header" onclick="toggleProject('proj-5-8')">
+            <button class="project-header" onclick="toggleProject('proj-5-8')" aria-expanded="false" aria-controls="proj-5-8-body">
               <h4 class="project-title">쿠버네티스 표준 운영 가이드 구성 및 기술 역량 내재화 교육</h4>
               <span class="project-period">2022.06–2022.07</span>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-opensource">K8s 교육 내재화</span>
               <span class="achievement-tag tag-opensource">CNCF 운영 가이드라인 수립</span>
@@ -1980,14 +2020,14 @@
           <div class="company-projects">
           <!-- 5-9 -->
           <div class="project-card" id="proj-5-9">
-            <div class="project-header" onclick="toggleProject('proj-5-9')">
+            <button class="project-header" onclick="toggleProject('proj-5-9')" aria-expanded="false" aria-controls="proj-5-9-body">
               <h4 class="project-title">NS홈쇼핑 Outer 인프라 설계 및 구축</h4>
               <div class="project-meta">
                 <span class="project-period">2022.02–2022.06</span>
                 <a href="https://www.m-i.kr/news/articleView.html?idxno=1113604" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기사 ↗</a>
               </div>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-infra">레거시 → K8s 전환</span>
               <span class="achievement-tag tag-infra">결제·장바구니 장애 격리</span>
@@ -2017,11 +2057,11 @@
 
           <!-- 5-10 -->
           <div class="project-card" id="proj-5-10">
-            <div class="project-header" onclick="toggleProject('proj-5-10')">
+            <button class="project-header" onclick="toggleProject('proj-5-10')" aria-expanded="false" aria-controls="proj-5-10-body">
               <h4 class="project-title">AIMS(Solum) Outer 인프라 설계 및 구축</h4>
               <span class="project-period">2021.06–2021.12</span>
-              <span class="project-toggle">&#8963;</span>
-            </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
             <div class="project-summary">
               <span class="achievement-tag tag-performance">배치 처리시간 45% 단축</span>
               <span class="achievement-tag tag-infra">K8s·DB 통합 모니터링</span>
@@ -2066,11 +2106,11 @@
           </button>
           <div class="company-projects">
             <div class="project-card" id="proj-hallim-1">
-              <div class="project-header" onclick="toggleProject('proj-hallim-1')">
+              <button class="project-header" onclick="toggleProject('proj-hallim-1')" aria-expanded="false" aria-controls="proj-hallim-1-body">
                 <h4 class="project-title">GPU 서버 관리 및 연구 데이터 정제</h4>
                 <span class="project-period">2020.05 ~ 2020.12</span>
-                <span class="project-toggle">&#8963;</span>
-              </div>
+                <span class="project-toggle" aria-hidden="true">&#8963;</span>
+              </button>
               <div class="project-body">
                 <div class="project-section">
                   <p class="project-section-title">수행</p>
@@ -2195,6 +2235,8 @@
     function toggleProject(id) {
       const card = document.getElementById(id);
       card.classList.toggle('open');
+      const btn = card.querySelector('.project-header');
+      if (btn) btn.setAttribute('aria-expanded', card.classList.contains('open'));
     }
 
     // Toggle company accordion
