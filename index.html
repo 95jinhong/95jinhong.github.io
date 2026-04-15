@@ -1249,7 +1249,92 @@
       .whatido-grid { display: block; }
       .whatido-card { margin-bottom: 0.5rem; background: #fff !important; }
       .section-animate { opacity: 1 !important; transform: none !important; }
+      .page-load-animate { animation: none !important; opacity: 1 !important; }
+      video { display: none !important; }
     }
+
+    /* ── Page Load Animation ── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-load-animate {
+      opacity: 0;
+      animation: fadeInUp 0.6s ease forwards;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .page-load-animate { animation: none; opacity: 1; }
+    }
+
+    /* ── Project Slider ── */
+    .project-slider {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+      margin-top: 8px;
+      background: var(--color-bg-secondary);
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.35s ease;
+    }
+    .slide {
+      min-width: 100%;
+    }
+    .slide img {
+      width: 100%;
+      display: block;
+      border-radius: 8px 8px 0 0;
+      object-fit: contain;
+      max-height: 300px;
+      background: #f0f0f0;
+    }
+    [data-theme="dark"] .slide img { background: #2a2a2a; }
+    .slide-caption {
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--color-text-sub);
+      padding: 5px 0 6px;
+      font-family: 'Noto Sans KR', sans-serif;
+    }
+    .slider-btn {
+      position: absolute;
+      top: calc(50% - 12px);
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 1.2rem;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .slider-btn:hover { background: rgba(0,0,0,0.6); }
+    .slider-prev { left: 8px; }
+    .slider-next { right: 8px; }
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      padding: 6px 0 8px;
+    }
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dot.active { background: var(--color-primary); }
 
     /* Skip Navigation */
     .skip-nav {
@@ -1278,7 +1363,7 @@
   <!-- ============================================================
        Sticky Nav
        ============================================================ -->
-  <nav class="sticky-nav" role="navigation" aria-label="주요 섹션">
+  <nav class="sticky-nav page-load-animate" role="navigation" aria-label="주요 섹션">
     <div class="nav-inner">
       <a href="https://95jinhong.github.io" class="nav-logo">박진홍</a>
       <span class="nav-spacer"></span>
@@ -1313,7 +1398,7 @@
     <!-- ============================================================
          Profile Header + About (통합 카드)
          ============================================================ -->
-    <section id="profile" >
+    <section id="profile" class="page-load-animate" style="animation-delay:0.2s">
       <div class="container">
         <div class="profile-card" id="about">
           <!-- 이름 · 역할 -->
@@ -1532,7 +1617,7 @@
           <!-- 5-7b AI 간식대장 -->
           <div class="project-card open" id="proj-5-7b">
             <button class="project-header" onclick="toggleProject('proj-5-7b')" aria-expanded="true" aria-controls="proj-5-7b-body">
-              <h4 class="project-title">AI 활용 사내 서비스 구축 (구멍가게24)</h4>
+              <h4 class="project-title">AI 활용 사내 서비스 구축 (똑닥간식24)</h4>
               <div class="project-meta">
                 <span class="project-period">2026.03</span>
               </div>
@@ -1562,6 +1647,42 @@
                   <li>자체 호스팅으로 사내 서비스 배포</li>
                   <li>인증서 기반 사내 도메인 연동</li>
                 </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">결과물</p>
+                <div class="project-slider" id="slider-snack">
+                  <div class="slider-track">
+                    <div class="slide active">
+                      <img src="assets/project_snack/bbros_snack1.png" alt="로그인 화면" loading="lazy">
+                      <p class="slide-caption">로그인 화면</p>
+                    </div>
+                    <div class="slide">
+                      <img src="assets/project_snack/bbros_snack2.png" alt="상품 선택" loading="lazy">
+                      <p class="slide-caption">상품 선택</p>
+                    </div>
+                    <div class="slide">
+                      <img src="assets/project_snack/bbros_snack3.png" alt="상품 주문" loading="lazy">
+                      <p class="slide-caption">상품 주문 (메인)</p>
+                    </div>
+                    <div class="slide">
+                      <img src="assets/project_snack/bbros_snack5.png" alt="주문 완료 · 알림 발송" loading="lazy">
+                      <p class="slide-caption">주문 완료 · 알림 발송</p>
+                    </div>
+                    <div class="slide">
+                      <img src="assets/project_snack/bbros_snack4.png" alt="투표 랭킹" loading="lazy">
+                      <p class="slide-caption">투표 랭킹</p>
+                    </div>
+                  </div>
+                  <button class="slider-btn slider-prev" onclick="slideMove('slider-snack',-1)" aria-label="이전">&#8249;</button>
+                  <button class="slider-btn slider-next" onclick="slideMove('slider-snack', 1)" aria-label="다음">&#8250;</button>
+                  <div class="slider-dots">
+                    <span class="dot active" onclick="slideTo('slider-snack',0)"></span>
+                    <span class="dot" onclick="slideTo('slider-snack',1)"></span>
+                    <span class="dot" onclick="slideTo('slider-snack',2)"></span>
+                    <span class="dot" onclick="slideTo('slider-snack',3)"></span>
+                    <span class="dot" onclick="slideTo('slider-snack',4)"></span>
+                  </div>
+                </div>
               </div>
               <div class="project-section">
                 <p class="project-section-title">기여도</p>
@@ -2230,6 +2351,24 @@
         }
       });
     });
+
+    // ── 슬라이더 ──
+    function slideTo(id, index) {
+      const slider = document.getElementById(id);
+      const slides = slider.querySelectorAll('.slide');
+      const dots = slider.querySelectorAll('.dot');
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      slider.querySelector('.slider-track').style.transform = `translateX(-${index * 100}%)`;
+    }
+    function slideMove(id, dir) {
+      const slider = document.getElementById(id);
+      const slides = slider.querySelectorAll('.slide');
+      const current = [...slides].findIndex(s => s.classList.contains('active'));
+      slideTo(id, (current + dir + slides.length) % slides.length);
+    }
 
     // Toggle project accordion
     function toggleProject(id) {
