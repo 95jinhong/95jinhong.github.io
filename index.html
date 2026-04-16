@@ -184,7 +184,8 @@
     }
 
     [data-theme="dark"] .profile-photo {
-      border-color: #4338ca;
+      border-color: #000000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     }
 
     [data-theme="dark"] .profile-career-badge {
@@ -464,7 +465,8 @@
       flex-shrink: 0;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #e0e7ff;
+      border: 3px solid #1a1a1a;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
 
     .profile-info {
@@ -1860,7 +1862,7 @@
           </div>
 
           <!-- 5-7a Proxmox -->
-          <div class="project-card open" id="proj-5-7a">
+          <div class="project-card" id="proj-5-7a">
             <button class="project-header" onclick="toggleProject('proj-5-7a')" aria-expanded="true" aria-controls="proj-5-7a-body">
               <h4 class="project-title">사내 Proxmox 가상화 플랫폼 도입</h4>
               <div class="project-meta">
@@ -1934,7 +1936,7 @@
           </div>
 
           <!-- 5-1 -->
-          <div class="project-card open" id="proj-5-1">
+          <div class="project-card" id="proj-5-1">
             <button class="project-header" onclick="toggleProject('proj-5-1')" aria-expanded="true" aria-controls="proj-5-1-body">
               <h4 class="project-title">인프라 아키텍처 고도화 및 비용 절감</h4>
               <div class="project-meta">
@@ -1995,7 +1997,7 @@
           </div>
 
           <!-- 5-2 -->
-          <div class="project-card open" id="proj-5-2">
+          <div class="project-card" id="proj-5-2">
             <button class="project-header" onclick="toggleProject('proj-5-2')" aria-expanded="true" aria-controls="proj-5-2-body">
               <h4 class="project-title">AWS 보안 서비스를 활용한 위협 탐지 및 대응 자동화</h4>
               <span class="project-period">2025</span>
@@ -2074,7 +2076,7 @@
           </div>
 
           <!-- 5-3 -->
-          <div class="project-card open" id="proj-5-3">
+          <div class="project-card" id="proj-5-3">
             <button class="project-header" onclick="toggleProject('proj-5-3')" aria-expanded="true" aria-controls="proj-5-3-body">
               <h4 class="project-title">SLI/SLO 체계 도입 및 서비스 안정성 개선</h4>
               <span class="project-period">2025</span>
@@ -2126,7 +2128,7 @@
           </div>
 
           <!-- 5-4 -->
-          <div class="project-card open" id="proj-5-4">
+          <div class="project-card" id="proj-5-4">
             <button class="project-header" onclick="toggleProject('proj-5-4')" aria-expanded="true" aria-controls="proj-5-4-body">
               <h4 class="project-title">Terraform Cloud 기반 IaC 도입 및 인프라 형상관리 체계 구축</h4>
               <span class="project-period">2024</span>
@@ -2165,7 +2167,7 @@
           </div>
 
           <!-- 5-5 -->
-          <div class="project-card open" id="proj-5-5">
+          <div class="project-card" id="proj-5-5">
             <button class="project-header" onclick="toggleProject('proj-5-5')" aria-expanded="true" aria-controls="proj-5-5-body">
               <h4 class="project-title">통합 Observability 체계 구축</h4>
               <span class="project-period">2023–2024</span>
@@ -2220,7 +2222,7 @@
           </div>
 
           <!-- 5-6 -->
-          <div class="project-card open" id="proj-5-6">
+          <div class="project-card" id="proj-5-6">
             <button class="project-header" onclick="toggleProject('proj-5-6')" aria-expanded="true" aria-controls="proj-5-6-body">
               <h4 class="project-title">EKS 무중단 업데이트 전략 수립 — Blue-Green → Multi-Target</h4>
               <div class="project-meta">
@@ -2324,7 +2326,7 @@
           </div>
 
           <!-- 5-8 -->
-          <div class="project-card open" id="proj-5-8">
+          <div class="project-card" id="proj-5-8">
             <button class="project-header" onclick="toggleProject('proj-5-8')" aria-expanded="true" aria-controls="proj-5-8-body">
               <h4 class="project-title">쿠버네티스 표준 운영 가이드 구성 및 기술 역량 내재화 교육</h4>
               <span class="project-period">2022.06–2022.07</span>
@@ -2404,8 +2406,8 @@
           </div>
 
           <!-- 5-10 -->
-          <div class="project-card open" id="proj-5-10">
-            <button class="project-header" onclick="toggleProject('proj-5-10')" aria-expanded="true" aria-controls="proj-5-10-body">
+          <div class="project-card" id="proj-5-10">
+            <button class="project-header" onclick="toggleProject('proj-5-10')" aria-expanded="false" aria-controls="proj-5-10-body">
               <h4 class="project-title">AIMS(Solum) Outer 인프라 설계 및 구축</h4>
               <span class="project-period">2021.06–2021.12</span>
               <span class="project-toggle" aria-hidden="true">&#8963;</span>
