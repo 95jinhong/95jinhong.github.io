@@ -161,23 +161,30 @@
        Sticky Nav — Soft clean
        ============================================================ */
     .sticky-nav {
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 100;
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom: 2px solid var(--color-border);
       box-shadow: 0 2px 8px rgba(99, 102, 241, 0.06);
-      transition: background 0.3s, border-color 0.3s;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease, background 0.3s, border-color 0.3s;
+    }
+
+    .sticky-nav.visible {
+      transform: translateY(0);
     }
 
     [data-theme="dark"] .sticky-nav {
       background: rgba(30, 31, 46, 0.95);
     }
 
-    [data-theme="dark"] .profile-emoji {
-      background: #2e3158;
+    [data-theme="dark"] .profile-photo {
+      border-color: #4338ca;
     }
 
     [data-theme="dark"] .profile-career-badge {
@@ -447,21 +454,24 @@
     .profile-header-row {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
-      margin-bottom: 1rem;
+      gap: 1.75rem;
+      margin-bottom: 1.25rem;
     }
 
-    .profile-emoji {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 72px;
-      height: 72px;
+    .profile-photo {
+      width: 150px;
+      height: 150px;
       flex-shrink: 0;
-      border-radius: 18px;
-      background: #ede9fe;
-      font-size: 36px;
-      line-height: 1;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e0e7ff;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
     }
 
     .profile-title-group {
@@ -1191,6 +1201,10 @@
         padding: 0 1.25rem;
       }
 
+      .sticky-nav {
+        display: none !important;
+      }
+
       .nav-inner {
         padding: 0 1.25rem;
       }
@@ -1199,8 +1213,19 @@
         padding: 1.5rem 1.25rem;
       }
 
+      .profile-header-row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+      }
+
+      .profile-info {
+        align-items: center;
+      }
+
       .profile-contacts {
-        justify-content: flex-start;
+        justify-content: center;
       }
 
       .skills-list {
@@ -1312,10 +1337,20 @@
       flex-direction: column;
       gap: 0.15rem;
       z-index: 100;
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
     }
 
     @media (min-width: 1200px) {
       #toc { display: flex; }
+    }
+
+    #toc.visible {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
     }
 
     .toc-label {
@@ -1530,20 +1565,16 @@
     <section id="profile" class="page-load-animate" style="animation-delay:0.2s">
       <div class="container">
         <div class="profile-card" id="about">
-          <!-- 이름 · 역할 -->
+          <!-- 프로필 헤더 -->
           <div class="profile-header-row">
-            <span class="profile-emoji">🧑‍💻</span>
-            <div class="profile-title-group">
-              <h1 class="profile-name">박진홍</h1>
-              <p class="profile-role">DevOps Engineer · <span class="profile-career-badge">총 경력 5년 1개월</span></p>
-            </div>
-          </div>
-
-          <!-- 한줄 소개 -->
-          <p class="profile-tagline">안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer입니다.</p>
-
-          <!-- 연락처 버튼 -->
-          <div class="profile-contacts">
+            <img class="profile-photo" src="assets/profile_photo.jpg" alt="박진홍 프로필 사진">
+            <div class="profile-info">
+              <div class="profile-title-group">
+                <h1 class="profile-name">박진홍</h1>
+                <p class="profile-role">DevOps Engineer · <span class="profile-career-badge">총 경력 5년 1개월</span></p>
+              </div>
+              <p class="profile-tagline" style="margin-bottom:0;">안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer입니다.</p>
+              <div class="profile-contacts" style="margin-bottom:0;">
             <a href="#" class="contact-link" onclick="event.preventDefault();document.getElementById('emailModal').style.display='flex'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               Email
@@ -1560,6 +1591,8 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
               LinkedIn
             </a>
+              </div>
+            </div>
           </div>
 
           <!-- 구분선 -->
@@ -2498,7 +2531,6 @@
 
   <!-- 사이드 목차 -->
   <nav id="toc" aria-label="페이지 목차">
-    <div class="toc-label">목차</div>
     <a href="#profile"        class="toc-link" data-toc="profile">소개</a>
     <a href="#skills"         class="toc-link" data-toc="skills">기술 스택</a>
     <a href="#competencies"   class="toc-link" data-toc="competencies">주요 역량</a>
@@ -2627,6 +2659,24 @@
         }
       }
     }
+
+    // Nav & TOC show/hide based on skills section visibility
+    (function() {
+      var nav = document.querySelector('.sticky-nav');
+      var toc = document.getElementById('toc');
+      var skillsSection = document.getElementById('skills');
+      if (!skillsSection) return;
+
+      function checkNav() {
+        var rect = skillsSection.getBoundingClientRect();
+        var show = rect.top <= 0;
+        if (nav) nav.classList.toggle('visible', show);
+        if (toc) toc.classList.toggle('visible', show);
+      }
+
+      window.addEventListener('scroll', checkNav, { passive: true });
+      checkNav();
+    })();
 
     // IntersectionObserver for nav active state
     (function() {
