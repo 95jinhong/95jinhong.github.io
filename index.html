@@ -1297,6 +1297,70 @@
       color: var(--color-text);
     }
 
+    /* ============================================================
+       사이드 목차 (TOC)
+       ============================================================ */
+    #toc {
+      position: fixed;
+      top: 80px;
+      right: calc((100vw - var(--max-width)) / 2 - 200px);
+      width: 152px;
+      display: none;
+      flex-direction: column;
+      gap: 0.15rem;
+      z-index: 100;
+    }
+
+    @media (min-width: 1200px) {
+      #toc { display: flex; }
+    }
+
+    .toc-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-sub);
+      padding: 0 0 0.5rem 0.75rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .toc-link {
+      display: block;
+      font-size: 0.7rem;
+      color: var(--color-text-sub);
+      text-decoration: none;
+      padding: 0.25rem 0.5rem 0.25rem 0.75rem;
+      border-left: 2px solid transparent;
+      border-radius: 0 4px 4px 0;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      line-height: 1.4;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .toc-link:hover {
+      color: var(--color-text);
+      background: var(--color-primary-light);
+    }
+
+    .toc-link.active {
+      color: var(--color-primary);
+      font-weight: 600;
+      border-left-color: var(--color-primary);
+      background: var(--color-primary-light);
+    }
+
+    .toc-link.toc-sub {
+      font-size: 0.65rem;
+      padding-left: 1.3rem;
+    }
+
+    @media print {
+      #toc { display: none !important; }
+    }
+
     @media print {
       * { box-shadow: none !important; border-color: #ccc !important; }
       body { font-size: 12px; color: #000; background: #fff; }
@@ -2354,6 +2418,19 @@
 
   </main>
 
+  <!-- 사이드 목차 -->
+  <nav id="toc" aria-label="페이지 목차">
+    <div class="toc-label">목차</div>
+    <a href="#profile"        class="toc-link" data-toc="profile">소개</a>
+    <a href="#skills"         class="toc-link" data-toc="skills">기술 스택</a>
+    <a href="#competencies"   class="toc-link" data-toc="competencies">주요 역량</a>
+    <a href="#experience"     class="toc-link" data-toc="experience">경력</a>
+    <a href="#company-ddocdoc" class="toc-link toc-sub" data-toc="company-ddocdoc">비브로스 (똑닥)</a>
+    <a href="#company-cloit"   class="toc-link toc-sub" data-toc="company-cloit">Cloit</a>
+    <a href="#company-osc"     class="toc-link toc-sub" data-toc="company-osc">OSC Korea</a>
+    <a href="#certifications"  class="toc-link" data-toc="certifications">자격증·학력·수상</a>
+  </nav>
+
   <!-- Phone 모달 -->
   <div id="phoneModal" onclick="if(event.target===this)this.style.display='none'">
     <div class="email-modal-card">
@@ -2519,6 +2596,50 @@
 
       animatedSections.forEach(function(section) {
         fadeObserver.observe(section);
+      });
+    })();
+
+    // TOC active state
+    (function() {
+      const tocLinks = document.querySelectorAll('.toc-link[data-toc]');
+      if (!tocLinks.length) return;
+
+      function setActive(id) {
+        tocLinks.forEach(function(link) {
+          if (link.dataset.toc === id) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+
+      // 섹션 + 회사 블록 모두 관찰
+      const targets = document.querySelectorAll('section[id], .company-block[id]');
+      const tocObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
+        });
+      }, {
+        rootMargin: '-15% 0px -75% 0px',
+        threshold: 0
+      });
+
+      targets.forEach(function(el) { tocObserver.observe(el); });
+
+      // 클릭 시 회사 아코디언 자동 열기
+      tocLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          const id = this.dataset.toc;
+          if (id && id.startsWith('company-')) {
+            const block = document.getElementById(id);
+            if (block && block.classList.contains('collapsed')) {
+              toggleCompany(id);
+            }
+          }
+        });
       });
     })();
   </script>
