@@ -21,6 +21,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
   <style>
     /* ============================================================
@@ -196,33 +197,29 @@
       border-left-color: #5eead4;
     }
 
-    [data-theme="dark"] .skill-strip:nth-child(1) { border-left-color: #6366f1; }
+    [data-theme="dark"] .skill-strip:nth-child(1) { background: #252745; border-color: #4a4f7a; }
     [data-theme="dark"] .skill-strip:nth-child(1) .skill-strip-name { color: #a5b4fc; }
-    [data-theme="dark"] .skill-strip:nth-child(1) .skill-chip { background: #1e1f2e; border-color: #6366f1; color: #a5b4fc; }
+    [data-theme="dark"] .skill-strip:nth-child(1) .skill-chip { background: rgba(0,0,0,0.2); border-color: #6366f1; color: #a5b4fc; }
 
-    [data-theme="dark"] .skill-strip:nth-child(2) { border-left-color: #10b981; }
-    [data-theme="dark"] .skill-strip:nth-child(2) .skill-strip-name { color: #6ee7b7; }
-    [data-theme="dark"] .skill-strip:nth-child(2) .skill-chip { background: #1e1f2e; border-color: #10b981; color: #6ee7b7; }
+    [data-theme="dark"] .skill-strip:nth-child(2) { background: #2e2518; border-color: #6b5530; }
+    [data-theme="dark"] .skill-strip:nth-child(2) .skill-strip-name { color: #fdba74; }
+    [data-theme="dark"] .skill-strip:nth-child(2) .skill-chip { background: rgba(0,0,0,0.2); border-color: #f97316; color: #fdba74; }
 
-    [data-theme="dark"] .skill-strip:nth-child(3) { border-left-color: #f97316; }
-    [data-theme="dark"] .skill-strip:nth-child(3) .skill-strip-name { color: #fdba74; }
-    [data-theme="dark"] .skill-strip:nth-child(3) .skill-chip { background: #1e1f2e; border-color: #f97316; color: #fdba74; }
+    [data-theme="dark"] .skill-strip:nth-child(3) { background: #1e2a3a; border-color: #2d4a6b; }
+    [data-theme="dark"] .skill-strip:nth-child(3) .skill-strip-name { color: #7dd3fc; }
+    [data-theme="dark"] .skill-strip:nth-child(3) .skill-chip { background: rgba(0,0,0,0.2); border-color: #38bdf8; color: #7dd3fc; }
 
-    [data-theme="dark"] .skill-strip:nth-child(4) { border-left-color: #38bdf8; }
-    [data-theme="dark"] .skill-strip:nth-child(4) .skill-strip-name { color: #7dd3fc; }
-    [data-theme="dark"] .skill-strip:nth-child(4) .skill-chip { background: #1e1f2e; border-color: #38bdf8; color: #7dd3fc; }
+    [data-theme="dark"] .skill-strip:nth-child(4) { background: #251e3a; border-color: #4a3a6b; }
+    [data-theme="dark"] .skill-strip:nth-child(4) .skill-strip-name { color: #c4b5fd; }
+    [data-theme="dark"] .skill-strip:nth-child(4) .skill-chip { background: rgba(0,0,0,0.2); border-color: #a855f7; color: #c4b5fd; }
 
-    [data-theme="dark"] .skill-strip:nth-child(5) { border-left-color: #a855f7; }
-    [data-theme="dark"] .skill-strip:nth-child(5) .skill-strip-name { color: #c4b5fd; }
-    [data-theme="dark"] .skill-strip:nth-child(5) .skill-chip { background: #1e1f2e; border-color: #a855f7; color: #c4b5fd; }
+    [data-theme="dark"] .skill-strip:nth-child(5) { background: #2e2a1e; border-color: #6b5e2a; }
+    [data-theme="dark"] .skill-strip:nth-child(5) .skill-strip-name { color: #fcd34d; }
+    [data-theme="dark"] .skill-strip:nth-child(5) .skill-chip { background: rgba(0,0,0,0.2); border-color: #f59e0b; color: #fcd34d; }
 
-    [data-theme="dark"] .skill-strip:nth-child(6) { border-left-color: #f59e0b; }
-    [data-theme="dark"] .skill-strip:nth-child(6) .skill-strip-name { color: #fcd34d; }
-    [data-theme="dark"] .skill-strip:nth-child(6) .skill-chip { background: #1e1f2e; border-color: #f59e0b; color: #fcd34d; }
-
-    [data-theme="dark"] .skill-strip:nth-child(7) { border-left-color: #fb7185; }
-    [data-theme="dark"] .skill-strip:nth-child(7) .skill-strip-name { color: #fda4af; }
-    [data-theme="dark"] .skill-strip:nth-child(7) .skill-chip { background: #1e1f2e; border-color: #fb7185; color: #fda4af; }
+    [data-theme="dark"] .skill-strip:nth-child(6) { background: #2e1e22; border-color: #6b3a42; }
+    [data-theme="dark"] .skill-strip:nth-child(6) .skill-strip-name { color: #fda4af; }
+    [data-theme="dark"] .skill-strip:nth-child(6) .skill-chip { background: rgba(0,0,0,0.2); border-color: #fb7185; color: #fda4af; }
 
     /* 다크모드 — 주요 역량 카드 */
     [data-theme="dark"] .whatido-card:nth-child(1) { background: #252745; border-color: #4a4f7a; }
@@ -590,37 +587,45 @@
        Skills Section — 풀와이드 가로 스트립
        ============================================================ */
     .skills-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
 
     .skill-strip {
       display: flex;
-      align-items: center;
-      padding: 0.7rem 1rem;
-      border-left: 4px solid;
-      border-radius: 0 8px 8px 0;
-      gap: 0.75rem;
+      flex-direction: column;
+      padding: 1.2rem;
+      background: var(--color-bg-card);
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      gap: 0.5rem;
+    }
+
+    .skill-strip:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
     }
 
     .skill-strip-label {
       display: flex;
       align-items: center;
       gap: 0.4rem;
-      min-width: 170px;
-      flex-shrink: 0;
+      margin-bottom: 0.1rem;
     }
 
     .skill-strip-icon {
-      font-size: 1rem;
+      font-size: 1.3rem;
       line-height: 1;
     }
 
     .skill-strip-name {
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       font-weight: 700;
       white-space: nowrap;
+      color: #111827;
     }
 
     .skill-strip-chips {
@@ -639,40 +644,35 @@
       border: 1.5px solid;
     }
 
-    /* 카테고리별 색상 — 1. Cloud & Infra */
-    .skill-strip:nth-child(1) { border-left-color: #4338ca; }
-    .skill-strip:nth-child(1) .skill-strip-name { color: #4338ca; }
+    /* 카테고리별 색상 — 1. Cloud & Container */
+    .skill-strip:nth-child(1) { background: #eef2ff; border-color: #c7d2fe; }
+    .skill-strip:nth-child(1) .skill-strip-name { color: #111827; }
     .skill-strip:nth-child(1) .skill-chip { border-color: #818cf8; color: #4338ca; }
 
-    /* 2. Container */
-    .skill-strip:nth-child(2) { border-left-color: #059669; }
-    .skill-strip:nth-child(2) .skill-strip-name { color: #065f46; }
-    .skill-strip:nth-child(2) .skill-chip { border-color: #34d399; color: #065f46; }
+    /* 2. IaC / CI·CD */
+    .skill-strip:nth-child(2) { background: #fff7ed; border-color: #fed7aa; }
+    .skill-strip:nth-child(2) .skill-strip-name { color: #111827; }
+    .skill-strip:nth-child(2) .skill-chip { border-color: #fb923c; color: #c2410c; }
 
-    /* 3. IaC / CI·CD */
-    .skill-strip:nth-child(3) { border-left-color: #ea580c; }
-    .skill-strip:nth-child(3) .skill-strip-name { color: #c2410c; }
-    .skill-strip:nth-child(3) .skill-chip { border-color: #fb923c; color: #c2410c; }
+    /* 3. Observability */
+    .skill-strip:nth-child(3) { background: #eff6ff; border-color: #bfdbfe; }
+    .skill-strip:nth-child(3) .skill-strip-name { color: #111827; }
+    .skill-strip:nth-child(3) .skill-chip { border-color: #38bdf8; color: #0369a1; }
 
-    /* 4. Observability */
-    .skill-strip:nth-child(4) { border-left-color: #0284c7; }
-    .skill-strip:nth-child(4) .skill-strip-name { color: #0369a1; }
-    .skill-strip:nth-child(4) .skill-chip { border-color: #38bdf8; color: #0369a1; }
+    /* 4. Data & Messaging */
+    .skill-strip:nth-child(4) { background: #f5f3ff; border-color: #ddd6fe; }
+    .skill-strip:nth-child(4) .skill-strip-name { color: #111827; }
+    .skill-strip:nth-child(4) .skill-chip { border-color: #c084fc; color: #6d28d9; }
 
-    /* 5. Database */
-    .skill-strip:nth-child(5) { border-left-color: #7c3aed; }
-    .skill-strip:nth-child(5) .skill-strip-name { color: #6d28d9; }
-    .skill-strip:nth-child(5) .skill-chip { border-color: #c084fc; color: #6d28d9; }
+    /* 5. Security */
+    .skill-strip:nth-child(5) { background: #fffbeb; border-color: #fde68a; }
+    .skill-strip:nth-child(5) .skill-strip-name { color: #111827; }
+    .skill-strip:nth-child(5) .skill-chip { border-color: #fbbf24; color: #92400e; }
 
-    /* 6. Security */
-    .skill-strip:nth-child(6) { border-left-color: #d97706; }
-    .skill-strip:nth-child(6) .skill-strip-name { color: #92400e; }
-    .skill-strip:nth-child(6) .skill-chip { border-color: #fbbf24; color: #92400e; }
-
-    /* 7. Language / Other */
-    .skill-strip:nth-child(7) { border-left-color: #e11d48; }
-    .skill-strip:nth-child(7) .skill-strip-name { color: #be123c; }
-    .skill-strip:nth-child(7) .skill-chip { border-color: #fb7185; color: #be123c; }
+    /* 6. Language / Other */
+    .skill-strip:nth-child(6) { background: #fff1f2; border-color: #fecdd3; }
+    .skill-strip:nth-child(6) .skill-strip-name { color: #111827; }
+    .skill-strip:nth-child(6) .skill-chip { border-color: #fb7185; color: #be123c; }
 
     /* ============================================================
        Core Competencies
@@ -1200,14 +1200,8 @@
         justify-content: flex-start;
       }
 
-      .skill-strip {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-      }
-
-      .skill-strip-label {
-        min-width: auto;
+      .skills-list {
+        grid-template-columns: 1fr;
       }
 
       .whatido-grid {
@@ -1241,6 +1235,66 @@
     @page {
       margin: 15mm 12mm;
       size: A4;
+    }
+
+    /* Email / Phone 모달 */
+    #emailModal, #phoneModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    .email-modal-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 2rem 2.4rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      text-align: center;
+      max-width: 360px;
+      width: 90%;
+      font-family: 'Noto Sans KR', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .email-modal-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--color-text-sub);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.7rem;
+    }
+    .email-modal-address {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--color-text);
+      margin-bottom: 1.4rem;
+      word-break: break-all;
+    }
+    .email-modal-actions {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+    .email-modal-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .email-modal-btn:hover { opacity: 0.85; }
+    .email-modal-btn.copy {
+      background: #6366f1;
+      color: #fff;
+    }
+    .email-modal-btn.close-btn {
+      background: var(--color-border);
+      color: var(--color-text);
     }
 
     @media print {
@@ -1423,13 +1477,13 @@
 
           <!-- 연락처 버튼 -->
           <div class="profile-contacts">
-            <a href="mailto:95jinhong@gmail.com" class="contact-link">
+            <a href="#" class="contact-link" onclick="event.preventDefault();document.getElementById('emailModal').style.display='flex'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               Email
             </a>
-            <a href="tel:010-3090-7243" class="contact-link">
+            <a href="#" class="contact-link" onclick="event.preventDefault();document.getElementById('phoneModal').style.display='flex'">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 0h3a2 2 0 012 1.72c.127 1.024.382 2.03.76 3a2 2 0 01-.45 2.11L6.27 7.9A16 16 0 0016.1 17.73l1.08-1.08a2 2 0 012.11-.45c.97.378 1.976.633 3 .76A2 2 0 0122 16.92z"/></svg>
-              010-3090-7243
+              Phone
             </a>
             <a href="https://github.com/95jinhong" class="contact-link" target="_blank" rel="noopener noreferrer">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
@@ -1467,7 +1521,6 @@
       <div class="container">
         <h2 class="section-title">🛠 기술 스택</h2>
         <hr class="section-divider">
-        <div class="profile-card">
         <div class="skills-list">
           <div class="skill-strip">
             <div class="skill-strip-label">
@@ -1475,67 +1528,57 @@
               <span class="skill-strip-name">Cloud &amp; Infra</span>
             </div>
             <div class="skill-strip-chips">
-              <span class="skill-chip">AWS (EKS, ECS)</span>
-              <span class="skill-chip">Naver (NKS)</span>
+              <span class="skill-chip">AWS</span>
+              <span class="skill-chip">Naver</span>
               <span class="skill-chip">VMware</span>
               <span class="skill-chip">Proxmox</span>
-            </div>
-          </div>
-          <div class="skill-strip">
-            <div class="skill-strip-label">
-              <span class="skill-strip-icon">🐳</span>
-              <span class="skill-strip-name">Container</span>
-            </div>
-            <div class="skill-strip-chips">
               <span class="skill-chip">Kubernetes</span>
-              <span class="skill-chip">Docker</span>
+              <span class="skill-chip">Helm</span>
               <span class="skill-chip">Karpenter</span>
-              <span class="skill-chip">Helm (Kustomize)</span>
-              <span class="skill-chip">Kubespray</span>
             </div>
           </div>
           <div class="skill-strip">
             <div class="skill-strip-label">
-              <span class="skill-strip-icon">⚙️</span>
+              <span class="skill-strip-icon"><i class="devicon-terraform-plain colored"></i></span>
               <span class="skill-strip-name">IaC / CI·CD</span>
             </div>
             <div class="skill-strip-chips">
-              <span class="skill-chip">Ansible</span>
               <span class="skill-chip">Terraform</span>
+              <span class="skill-chip">Ansible</span>
               <span class="skill-chip">GitHub Actions</span>
-              <span class="skill-chip">GitLab</span>
               <span class="skill-chip">Argo Project</span>
+              <span class="skill-chip">GitLab</span>
               <span class="skill-chip">Harbor</span>
               <span class="skill-chip">Nexus</span>
             </div>
           </div>
           <div class="skill-strip">
             <div class="skill-strip-label">
-              <span class="skill-strip-icon">📊</span>
+              <span class="skill-strip-icon"><i class="devicon-prometheus-original colored"></i></span>
               <span class="skill-strip-name">Observability</span>
             </div>
             <div class="skill-strip-chips">
               <span class="skill-chip">Prometheus</span>
-              <span class="skill-chip">Thanos</span>
               <span class="skill-chip">Grafana</span>
+              <span class="skill-chip">Thanos</span>
+              <span class="skill-chip">OpenTelemetry</span>
               <span class="skill-chip">Loki</span>
               <span class="skill-chip">Tempo</span>
-              <span class="skill-chip">OpenTelemetry</span>
               <span class="skill-chip">EFK</span>
               <span class="skill-chip">Opensearch</span>
             </div>
           </div>
           <div class="skill-strip">
             <div class="skill-strip-label">
-              <span class="skill-strip-icon">🗄️</span>
-              <span class="skill-strip-name">Database</span>
+              <span class="skill-strip-icon"><i class="devicon-apachekafka-original"></i></span>
+              <span class="skill-strip-name">Data / Message</span>
             </div>
             <div class="skill-strip-chips">
               <span class="skill-chip">PostgreSQL</span>
               <span class="skill-chip">MySQL</span>
-              <span class="skill-chip">RabbitMQ</span>
+              <span class="skill-chip">Redis</span>
               <span class="skill-chip">Kafka</span>
-              <span class="skill-chip">Redis (Valkey)</span>
+              <span class="skill-chip">RabbitMQ</span>
             </div>
           </div>
           <div class="skill-strip">
@@ -1544,10 +1587,11 @@
               <span class="skill-strip-name">Security</span>
             </div>
             <div class="skill-strip-chips">
-              <span class="skill-chip">Trivy</span>
+              <span class="skill-chip">Netbird</span>
+              <span class="skill-chip">OpenVPN</span>
               <span class="skill-chip">SonarQube</span>
               <span class="skill-chip">Keycloak</span>
-              <span class="skill-chip">Netbird (VPN)</span>
+              <span class="skill-chip">Trivy</span>
               <span class="skill-chip">WAF</span>
               <span class="skill-chip">Security Hub</span>
             </div>
@@ -1555,16 +1599,16 @@
           <div class="skill-strip">
             <div class="skill-strip-label">
               <span class="skill-strip-icon">💻</span>
-              <span class="skill-strip-name">Language / Other</span>
+              <span class="skill-strip-name">Language / ETC</span>
             </div>
             <div class="skill-strip-chips">
               <span class="skill-chip">Go</span>
-              <span class="skill-chip">Kubecost</span>
               <span class="skill-chip">Istio</span>
+              <span class="skill-chip">Kubecost</span>
               <span class="skill-chip">Backstage</span>
+              <span class="skill-chip">Infisical</span>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </section>
@@ -2309,6 +2353,30 @@
     </section>
 
   </main>
+
+  <!-- Phone 모달 -->
+  <div id="phoneModal" onclick="if(event.target===this)this.style.display='none'">
+    <div class="email-modal-card">
+      <div class="email-modal-title">연락처</div>
+      <div class="email-modal-address">010-3090-7243</div>
+      <div class="email-modal-actions">
+        <button class="email-modal-btn copy" onclick="navigator.clipboard.writeText('010-3090-7243').then(()=>{this.textContent='복사됨 ✓';setTimeout(()=>{this.textContent='번호 복사'},1500)})">번호 복사</button>
+        <button class="email-modal-btn close-btn" onclick="document.getElementById('phoneModal').style.display='none'">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email 모달 -->
+  <div id="emailModal" onclick="if(event.target===this)this.style.display='none'">
+    <div class="email-modal-card">
+      <div class="email-modal-title">이메일 주소</div>
+      <div class="email-modal-address">95jinhong@gmail.com</div>
+      <div class="email-modal-actions">
+        <button class="email-modal-btn copy" onclick="navigator.clipboard.writeText('95jinhong@gmail.com').then(()=>{this.textContent='복사됨 ✓';setTimeout(()=>{this.textContent='주소 복사'},1500)})">주소 복사</button>
+        <button class="email-modal-btn close-btn" onclick="document.getElementById('emailModal').style.display='none'">닫기</button>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2026 박진홍 · DevOps Engineer</p>
