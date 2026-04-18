@@ -2283,7 +2283,7 @@
           <!-- 5-6 -->
           <div class="project-card open" id="proj-5-6">
             <button class="project-header" onclick="toggleProject('proj-5-6')" aria-expanded="true" aria-controls="proj-5-6-body">
-              <h4 class="project-title">EKS 무중단 업데이트 전략 수립 — Blue-Green → Multi-Target</h4>
+              <h4 class="project-title">EKS 무중단 업데이트 전략 수립</h4>
               <div class="project-meta">
                 <span class="project-period">2023–2025</span>
                 <a href="https://boostbrothers.github.io/2025-04-07-devops-eks-new-upgrade" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기술블로그 ↗</a>
@@ -2293,33 +2293,46 @@
             </button>
             <div class="project-summary">
               <span class="achievement-tag tag-performance">10시간 → 5분</span>
-              <span class="achievement-tag tag-performance">즉시 롤백 체계</span>
+              <span class="achievement-tag tag-performance">무중단 업데이트</span>
+              <span class="achievement-tag tag-performance">롤백 체계 구성</span>
             </div>
             <div class="project-body">
               <div class="project-section">
                 <p class="project-section-title">도입 배경</p>
-                <p>인플레이스 업그레이드의 롤백 제약으로 장애 발생 시 복구 지연과 서비스 중단 위험이 상존했습니다.</p>
+                <p>In-place 업그레이드 중 Istio 호환성 이슈로 서비스가 사용 불가한 상황이 발생하여 복구 지연과 중단 위험이 상존했습니다. 롤백이 즉시 가능한 Multi-Target(Blue-Green) 방식으로 전환이 필요했습니다.</p>
               </div>
               <div class="project-section">
-                <p class="project-section-title">수행</p>
+                <p class="project-section-title">기술적 챌린지</p>
                 <ul>
-                  <li>Multi-Target 방식 전환 — 신/구 클러스터 동시 유지, Route53/ALB 가중치로 트래픽 10%→50%→100% 점진 전환</li>
-                  <li>DNS TTL 최소화, ALB 타깃 전환 시나리오 사전 설계 — 문제 시 가중치 0%로 즉시 롤백</li>
-                  <li>매니지먼트 계정 ArgoCD 기반 멀티 클러스터 배포 일관성 확보</li>
+                  <li><strong>DNS TTL 한계:</strong> 초기 Route53 레코드 변경 방식은 클라이언트 DNS 캐시 잔존으로 즉시 전환이 불가. CloudFront는 캐시 무효화로 대응했으나, ELB 직결 경로는 TTL 문제가 남아 ALB 타깃그룹 전환 방식으로 고도화</li>
+                  <li><strong>Blue-Green 이중 운영 비용:</strong> 검증 기간을 최소화하고 테스트 구간은 Spot 인스턴스로 구성, 실제 트래픽 전환 시점에만 프로덕션 노드풀로 재프로비저닝</li>
+                  <li><strong>배포 순서 설계:</strong> Kafka 컨슈머 리밸런싱·인서비스 배치 중복 실행을 방지하기 위해 순차 전환 스크립트 구성</li>
                 </ul>
               </div>
               <div class="project-section">
                 <p class="project-section-title">의사결정</p>
                 <ul>
-                  <li><strong>In-place 방식의 롤백 불가 한계:</strong> Multi-Target 전환 결정</li>
-                  <li>API 호환성·add-on 버전 사전 검증 후 순차 적용</li>
+                  <li><strong>In-place → Blue-Green 전환:</strong> 롤백 불가·호환성 리스크 해소를 위해 신/구 클러스터 이중 유지 방식 채택</li>
+                  <li><strong>Route53 레코드 → ALB 타깃그룹 전환:</strong> DNS TTL 캐시 영향을 제거하고 즉시 트래픽 스위칭이 가능한 가중치 전환 방식으로 고도화</li>
+                  <li>K8s·EKS 버전 API 호환성과 add-on·3rd-party Chart 호환성 사전 검증 후 순차 적용</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li>Multi-Target 클러스터 병행 운영 — ALB 타깃그룹 가중치로 트래픽 <strong>10% → 50% → 100%</strong> 점진 전환, 이상 감지 시 가중치 0%로 즉시 롤백</li>
+                  <li>순차 전환 스크립트 구성 — 컨슈머 리밸런싱·배치 중복 실행 방지</li>
+                  <li>누락 API 검증용 프록시 서버 운영 — 구 클러스터 잔여 트래픽을 추적하여 신규 클러스터로 라우팅</li>
+                  <li>안정화 이후 3일 유예를 두고 구 클러스터 리소스 제거, Terraform IRSA 모듈로 멀티 클러스터 권한 일관성 확보</li>
+                  <li>매니지먼트 계정 ArgoCD 기반 멀티 클러스터 배포 일관성 유지</li>
                 </ul>
               </div>
               <div class="project-section">
                 <p class="project-section-title">결과</p>
-                <span class="contribution-badge">K8s·EKS 버전 API 호환성 검증, add-on·3rd-party Chart 순차 업데이트 검증, Terraform IRSA 모듈 구성 담당</span>
                 <ul>
-                  <li><span class="kpi-highlight">업데이트 소요 시간 10h → 5min으로 단축</span> — Blue-Green에서 Multi-Target(ALB 가중치 점진 전환) 방식으로 전환하여 달성</li>
+                  <li><span class="kpi-highlight">업데이트 소요 시간 10h → 5min으로 단축</span> — Multi-Target 가중치 전환 방식으로 달성</li>
+                  <li><strong>EKS 1.25 → 1.35</strong>까지 3년간 동일 방식 유지, <strong>매년 1회 3개 버전</strong>을 한 번에 업데이트하며 무중단 운영</li>
+                  <li>기존에는 업데이트 기간 동안 배포 프리징이 필요했으나, Blue-Green 전환 이후에는 <strong>업데이트 중에도 애자일 배포·핫픽스 대응이 가능</strong>한 체계 확보</li>
                 </ul>
               </div>
             </div>
@@ -2354,6 +2367,7 @@
             </button>
             <div class="project-summary">
               <span class="achievement-tag tag-infra">레거시 → K8s 클라우드 전환</span>
+              <span class="achievement-tag tag-infra">내부망 콘솔 구성</span>
               <span class="achievement-tag tag-infra">MSA 기반 마련</span>
             </div>
             <div class="project-body">
@@ -2364,22 +2378,48 @@
               <div class="project-section">
                 <p class="project-section-title">기술적 챌린지</p>
                 <ul>
-                  <li><strong>Squid Proxy 설계:</strong> 내부망에서 Naver Console 접근 시 외부망 도메인을 화이트리스트 기반으로 인터넷에 연결해야 했음. 특정 관리 유저만 접근하므로 화이트리스트 기반 Squid Proxy로 구성.</li>
-                  <li><strong>컨테이너 이미지 공유:</strong> 각 업무망 간 통신 가능/불가 구간이 혼재하여 Nexus를 각 망에 구성하고 미러링으로 이미지 공유.</li>
-                  <li><strong>네이버 클라우드 제약:</strong> 프라이빗 이미지 저장소, 프라이빗 도메인 등 미지원 기능을 오픈소스로 대체.</li>
+                  <li><strong>Squid Proxy 설계:</strong> 내부망에서 Naver Console 접근 시 외부망 도메인을 화이트리스트 기반으로 인터넷을 경유해야 했음. 특정 관리 유저에게만 접근을 허용하기 위해 화이트리스트 기반 Squid Proxy로 구성.</li>
+                  <li><strong>컨테이너 이미지 공유:</strong> 업무망마다 통신 가능/불가 구간이 혼재하여 각 망에 Nexus를 구성하고 미러링으로 이미지 공유.</li>
+                  <li><strong>네이버 클라우드 제약:</strong> 프라이빗 이미지 저장소·프라이빗 도메인 등 미지원 기능을 오픈소스로 대체.</li>
                 </ul>
               </div>
               <div class="project-section">
                 <p class="project-section-title">수행</p>
                 <ul>
                   <li>Naver Private Cloud(Neurocloud) 기반 NKS 인프라 설계·마이그레이션</li>
+                  <li>중계 서버 구성을 통한 망분리 환경 구축</li>
                   <li>Link-Local IP 제약 → Squid/Socat Proxy 우회 경로 설계</li>
-                  <li>Velero 백업 전략·운영 가이드 작성</li>
+                  <li>SKT TKS(Taco Kubernetes Service) 도입 검토 및 운영</li>
+                  <li>NCP 백업 기능 부재 → Velero 오픈소스 기반 백업 전략 수립 및 운영 가이드 작성</li>
+                  <li>도커라이징 표준 템플릿 구성 — 컨테이너화 기준 정립 및 팀 내 적용</li>
                 </ul>
               </div>
               <div class="project-section">
                 <p class="project-section-title">결과</p>
-                <span class="contribution-badge">PL 1명, SA 2명(본인 SA)</span>
+                <ul>
+                  <li><span class="kpi-highlight">공공·금융권 최초 NCP(Naver Cloud Platform) Hybrid Cloud 구성</span></li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">관련 자료</p>
+                <div class="project-slider" id="slider-cloit">
+                  <div class="slider-track">
+                    <div class="slide active">
+                      <img src="assets/project_cloit/cloit_proxy.png" alt="Socat Proxy를 통한 프라이빗 콘솔 접근 설계" loading="lazy">
+                      <p class="slide-caption">Socat Proxy를 통한 프라이빗 콘솔 접근 설계</p>
+                    </div>
+                    <div class="slide">
+                      <img src="assets/project_cloit/cloit_tks_arch.png" alt="SKT TKS 기반 인프라 구성" loading="lazy">
+                      <p class="slide-caption">SKT TKS 기반 인프라 구성</p>
+                    </div>
+                  </div>
+                  <button class="slider-btn slider-prev" onclick="slideMove('slider-cloit',-1)" aria-label="이전">&#8249;</button>
+                  <button class="slider-btn slider-next" onclick="slideMove('slider-cloit', 1)" aria-label="다음">&#8250;</button>
+                  <div class="slider-dots">
+                    <span class="dot active" onclick="slideTo('slider-cloit',0)"></span>
+                    <span class="dot" onclick="slideTo('slider-cloit',1)"></span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -2392,8 +2432,9 @@
               <span class="project-toggle" aria-hidden="true">&#8963;</span>
             </button>
             <div class="project-summary">
-              <span class="achievement-tag tag-opensource">K8s 교육 내재화</span>
-              <span class="achievement-tag tag-opensource">CNCF 운영 가이드라인 수립</span>
+              <span class="achievement-tag tag-opensource">K8s 운영 가이드 수립</span>
+              <span class="achievement-tag tag-opensource">CNCF PoC 검증</span>
+              <span class="achievement-tag tag-opensource">기술 역량 온보딩</span>
             </div>
             <div class="project-body">
               <div class="project-section">
@@ -2406,7 +2447,10 @@
               </div>
               <div class="project-section">
                 <p class="project-section-title">결과</p>
-                <span class="contribution-badge">교육 자료 설계, CNCF PoC 수행, 운영 가이드 문서화 주도</span>
+                <ul>
+                  <li><span class="kpi-highlight">신입 사원 교육 커리큘럼 멘토링 및 On-Boarding 진행</span></li>
+                  <li><span class="kpi-highlight">프로젝트 오픈소스 가이드 및 문서화 작성</span></li>
+                </ul>
               </div>
             </div>
           </div>
