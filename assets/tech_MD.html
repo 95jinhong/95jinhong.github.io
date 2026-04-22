@@ -41,7 +41,8 @@
       transition: padding 0.22s ease, box-shadow 0.22s ease, transform 0.15s ease;
     }
     .page-fab:hover,
-    .page-fab:focus-visible {
+    .page-fab:focus-visible,
+    .page-fab.expanded {
       padding: 0 14px 0 12px;
       transform: translateY(-1px);
       background: #111827;
@@ -63,7 +64,8 @@
       transition: max-width 0.22s ease, opacity 0.18s ease, margin-left 0.22s ease;
     }
     .page-fab:hover .page-fab-label,
-    .page-fab:focus-visible .page-fab-label {
+    .page-fab:focus-visible .page-fab-label,
+    .page-fab.expanded .page-fab-label {
       max-width: 140px;
       opacity: 1;
       margin-left: 7px;
@@ -1277,6 +1279,35 @@
   </svg>
   <span class="page-fab-label">포트폴리오 보기</span>
 </a>
+
+<script>
+  // Page Toggle FAB: 1st click expands label, 2nd click navigates
+  (function() {
+    const fab = document.querySelector('.page-fab');
+    if (!fab) return;
+
+    fab.addEventListener('click', function(e) {
+      if (fab.matches(':hover')) return;
+      if (!fab.classList.contains('expanded')) {
+        e.preventDefault();
+        fab.classList.add('expanded');
+      }
+    });
+
+    document.addEventListener('click', function(e) {
+      if (fab.classList.contains('expanded') && !fab.contains(e.target)) {
+        fab.classList.remove('expanded');
+      }
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && fab.classList.contains('expanded')) {
+        fab.classList.remove('expanded');
+        fab.blur();
+      }
+    });
+  })();
+</script>
 
 </body>
 </html>
