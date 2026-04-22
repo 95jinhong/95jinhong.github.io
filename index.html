@@ -3174,7 +3174,6 @@
       if (!fab) return;
 
       fab.addEventListener('click', function(e) {
-        if (fab.matches(':hover')) return;
         if (!fab.classList.contains('expanded')) {
           e.preventDefault();
           fab.classList.add('expanded');
