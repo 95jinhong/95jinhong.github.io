@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="박진홍 — DevOps Engineer 5년 1개월. AWS EKS, Kubernetes, Terraform, ArgoCD, GitHub Actions 기반 인프라 자동화 전문가의 포트폴리오.">
+  <meta name="description" content="박진홍 — DevOps Engineer 5년 3개월. AWS EKS, Kubernetes, Terraform, ArgoCD, GitHub Actions 기반 인프라 자동화 전문가의 포트폴리오.">
   <meta property="og:title" content="박진홍 | DevOps Engineer">
   <meta property="og:description" content="안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer">
   <meta property="og:type" content="website">
@@ -1657,7 +1657,7 @@
             <div class="profile-info">
               <div class="profile-title-group">
                 <h1 class="profile-name">박진홍</h1>
-                <p class="profile-role">DevOps Engineer · <span class="profile-career-badge">총 경력 5년 1개월</span></p>
+                <p class="profile-role">DevOps Engineer · <span class="profile-career-badge">총 경력 5년 3개월</span></p>
               </div>
               <p class="profile-tagline" style="margin-bottom:0;">안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer입니다.</p>
               <div class="profile-contacts" style="margin-bottom:0;">
@@ -2007,7 +2007,7 @@
                 <p class="project-section-title">결과</p>
                 <ul>
                   <li><span class="kpi-highlight">추가 서버 구매 없이 기존 대비 약 40% 이상 VM 증설 가능</span> — 기존 하드웨어 재활용 기준</li>
-                  <li>VM 복제 기반 신규 서버 세팅 시간 <span class="kpi-highlight">약 1분으로 단축</span> — 기존 수동 OS 설치 대비</li>
+                  <li><span class="kpi-highlight">신규 서버 세팅 시간 약 30분 → 약 1분 (97% 단축)</span> — 수동 OS 설치·초기 설정 대비 VM 복제 활용</li>
                   <li>AWS S3 백업 전략으로 클러스터 간 빠른 복제·DR 경로 확보</li>
                   <li>약 50개 VM 통합 운영 중 — 부서별 독립 워크로드 환경 제공</li>
                 </ul>
@@ -2288,7 +2288,7 @@
                 <ul>
                   <li><strong>Golden Image에 BuildKit·공통 빌드 패키지 구성</strong>을 통해 Runner 구동 시 이미지 Pull 비용 제거, Registry Rate Limit 회피.</li>
                   <li>Dockerfile 공통 템플릿(Layer 순서·의존성 설치 분리·Multi-stage 정리) 정립 및 서비스 레포 순차 이관, 캐시 히트율 최적화.</li>
-                  <li>EFS를 통해 노드 모듈 패키지를 공유하여 노드 버전에 따른 모듈을 각각 구성하여 사용하고, 도커 템플릿을 통해 캐시 히트 최적화를 구성.</li>
+                  <li>EFS 기반 노드 모듈 패키지 공유로 노드 버전별 모듈 분리 구성, Dockerfile 공통 템플릿 적용으로 캐시 히트율 최적화.</li>
                 </ul>
               </div>
               <div class="project-section">
@@ -2457,14 +2457,14 @@
             <div class="project-body">
               <div class="project-section">
                 <p class="project-section-title">도입 배경</p>
-                <p>In-place 업그레이드 중 Istio 호환성 이슈로 서비스가 사용 불가한 상황이 발생해 복구 지연과 중단 위험이 상존했습니다. 롤백이 즉시 가능한 Multi-Target 방식으로 전환할 필요가 있었습니다.</p>
+                <p>In-place 업그레이드 중 Istio 호환성 이슈로 서비스를 사용할 수 없는 상황이 발생해 복구 지연과 중단 위험이 상존했습니다. 롤백이 즉시 가능한 Multi-Target 방식으로 전환할 필요가 있었습니다.</p>
               </div>
               <div class="project-section">
                 <p class="project-section-title">기술적 챌린지</p>
                 <ul>
                   <li><strong>DNS TTL — 즉시 트래픽 전환 불가:</strong> 초기 Route53 레코드 변경 방식은 클라이언트 DNS 캐시 잔존으로 즉시 전환 불가. CloudFront 경로는 캐시 무효화로 대응 가능하지만, ELB 직결 경로는 TTL 영향이 남아 트래픽 전환 시점 정밀 제어 어려움.</li>
                   <li>Blue-Green 이중 운영 비용: 신·구 클러스터를 동시 운영하는 기간에 노드 비용이 두 배로 증가, 검증 기간을 길게 가져갈수록 비용 부담 선형 증가.</li>
-                  <li>상태 있는 워크로드의 안전한 전환 순서: Kafka 컨슈머 리밸런싱과 인서비스 배치 잡 중복 실행이 데이터 정합성 문제를 유발할 가능성 존재. 전환 순서와 상태 보장 기준 필요.</li>
+                  <li>Stateful 워크로드의 안전한 전환 순서: Kafka 컨슈머 리밸런싱과 인서비스 배치 잡 중복 실행이 데이터 정합성 문제를 유발할 가능성 존재. 전환 순서와 상태 보장 기준 필요.</li>
                 </ul>
               </div>
               <div class="project-section">
@@ -2548,7 +2548,7 @@
                 <ul>
                   <li><strong>Squid Proxy 선택:</strong> VPN은 인터넷 트래픽 전체를 포괄해 금융권 보안 정책과 충돌. 화이트리스트 기반 Squid Proxy로 도메인 수준 선택적 접근 제어. Link-Local IP 제약은 Socat Proxy로 우회.</li>
                   <li>Nexus 이미지 미러링: 망 간 직접 통신 불가 구간에서 단일 Registry 접근이 불가. 각 망에 Nexus를 두고 미러링으로 이미지 전파.</li>
-                  <li><strong>OSS 대체 전략 (Velero·Nexus 등):</strong> NCP에서 Private Registry를 미지원하여 오픈소스 기반으로 대체하여 표준 K8s 운영 패턴을 유지하고 백업은 Velero 기반으로 수립.</li>
+                  <li><strong>OSS 대체 전략 (Velero·Nexus 등):</strong> NCP가 Private Registry를 지원하지 않아 OSS 기반으로 대체, 표준 K8s 운영 패턴 유지 및 Velero 기반 백업 전략 수립.</li>
                 </ul>
               </div>
               <div class="project-section">
@@ -2619,7 +2619,7 @@
               <div class="project-section">
                 <p class="project-section-title">결과</p>
                 <ul>
-                  <li><span class="kpi-highlight">신입 사원 교육 커리큘럼 멘토링 및 On-Boarding 진행</span></li>
+                  <li><span class="kpi-highlight">신입 사원 교육 커리큘럼 멘토링 및 Onboarding 진행</span></li>
                   <li><span class="kpi-highlight">프로젝트 오픈소스 가이드 및 문서화 작성</span></li>
                 </ul>
               </div>
