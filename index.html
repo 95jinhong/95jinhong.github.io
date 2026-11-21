@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="박진홍 — DevOps Engineer 5년 3개월. AWS EKS, Kubernetes, Terraform, ArgoCD, GitHub Actions 기반 인프라 자동화 전문가의 포트폴리오.">
+  <meta name="description" content="박진홍 — DevOps Engineer 5년 10개월. AWS EKS, Kubernetes, Terraform, ArgoCD, GitHub Actions 기반 인프라 자동화 전문가의 포트폴리오.">
   <meta property="og:title" content="박진홍 | DevOps Engineer">
   <meta property="og:description" content="안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer">
   <meta property="og:type" content="website">
@@ -1541,6 +1541,8 @@
       background: #f0f0f0;
     }
     [data-theme="dark"] .slide img { background: #2a2a2a; }
+    .slide img.is-diagram { max-height: 440px; background: #fff; }
+    [data-theme="dark"] .slide img.is-diagram { background: #fff; }
     .slide-caption {
       text-align: center;
       font-size: 0.78rem;
@@ -1657,7 +1659,7 @@
             <div class="profile-info">
               <div class="profile-title-group">
                 <h1 class="profile-name">박진홍</h1>
-                <p class="profile-role">DevOps Engineer · <span class="profile-career-badge">총 경력 5년 3개월</span></p>
+                <p class="profile-role">DevOps Engineer · <span class="profile-career-badge">총 경력 5년 10개월</span></p>
               </div>
               <p class="profile-tagline" style="margin-bottom:0;">안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer입니다.</p>
               <div class="profile-contacts" style="margin-bottom:0;">
@@ -1721,6 +1723,7 @@
               <span class="skill-chip">Kubernetes</span>
               <span class="skill-chip">Helm</span>
               <span class="skill-chip">Karpenter</span>
+              <span class="skill-chip">Bedrock AgentCore</span>
             </div>
           </div>
           <div class="skill-strip">
@@ -1845,13 +1848,155 @@
             <img src="assets/ddocdoc-icon.png" alt="비브로스(똑닥) 로고" class="company-icon">
             <h3 class="company-name">비브로스 (똑닥) <span class="company-desc">누적 가입자 1,000만명 · MAU 200만명 헬스케어 O2O 플랫폼</span></h3>
           </div>
-          <p class="company-meta">DevOps Engineer &nbsp;|&nbsp; 2022.12 ~ 현재 <span class="company-duration">3년 5개월</span></p>
-          <p class="company-env">EKS 멀티 클러스터·Terraform·ArgoCD 기반 GitOps 인프라 운영. Blue-Green 무중단 업데이트·OSS 관측 전환·ARM 비용 20% 절감·SLO·보안 자동화 주도.</p>
+          <p class="company-meta">DevOps Engineer &nbsp;|&nbsp; 2022.12 ~ 현재 <span class="company-duration">4년</span></p>
+          <p class="company-env">EKS 멀티 클러스터·Terraform·ArgoCD 기반 GitOps 인프라 운영. 사내 인프라 플랫폼(배럭) 구축·Blue-Green 무중단 업데이트·OSS 관측 전환·ARM 비용 20% 절감·SLO·보안 자동화 주도.</p>
 
           <button class="company-show-toggle" onclick="toggleCompany('company-ddocdoc')">
             <span class="toggle-text">프로젝트 접기</span> ▾
           </button>
           <div class="company-projects">
+          <!-- 5-7d 배럭 -->
+          <div class="project-card open" id="proj-5-7d">
+            <button class="project-header" onclick="toggleProject('proj-5-7d')" aria-expanded="true" aria-controls="proj-5-7d-body">
+              <h4 class="project-title">사내 인프라 플랫폼 '배럭' 구축 및 운영</h4>
+              <div class="project-meta">
+                <span class="project-period">2026</span>
+                <a href="https://boostbrothers.github.io/2026-10-05-devops-barracks-platform" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기술블로그 ↗</a>
+              </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
+            <div class="project-summary">
+              <span class="achievement-tag tag-infra">티켓 → 셀프서비스</span>
+              <span class="achievement-tag tag-performance">요청 처리 약 1일 → 6~9분</span>
+              <span class="achievement-tag tag-opensource">오픈 이후 137건 처리</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>서버 배포·Kafka 토픽·AWS 권한 같은 인프라 요청을 Jira 티켓으로 받아 운영자가 직접 코드를 고치고 배포했습니다. 운영자가 처리하는 구조라 진행 상황은 티켓 댓글·DM으로만 공유됐고, 처리 속도는 운영자 일정에 따라 5분에서 하루 이상까지 달라졌으며, 처리할 수 있는 범위도 담당자의 도메인 지식에 묶여 있었습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>통제:</strong> 신청 경로를 열되 잘못된 변경은 운영에 반영되지 않아야 함.</li>
+                  <li><strong>공존:</strong> ArgoCD(약 400개 앱)·Terraform 위에 배포 권한을 가진 시스템을 늘리지 않아야 함.</li>
+                  <li><strong>사용성:</strong> 인프라를 모르는 비개발자·개발자 모두 신청할 수 있어야 함.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li><strong>2주 PoC:</strong> AI-DLC로 설계 5시간·코드 8일, 단독 개발(React·Go·PostgreSQL).</li>
+                  <li><strong>컨트롤러로서의 플랫폼:</strong> 배럭은 신청·승인·추적만 맡고, 실제 배포 자동화는 배럭이 아닌 기존 GitHub Actions·ArgoCD가 수행.</li>
+                  <li><strong>신청 항목:</strong> 서버(API·Consumer·Batch)·피크타임 스케일, Kafka 토픽·ACL·커넥터, AWS·MongoDB 접근 권한(IRSA)을 유형별 폼으로 신청.</li>
+                  <li><strong>고도화(진행 중):</strong> 초기 2주 피드백 40여 건 반영 후, 배포·배치 모니터링과 운영 지표로 옵저버빌리티를 구성하고 AI Agent로 인프라 신청·운영 질문을 대화로 처리하는 기능을 붙이는 중.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">결과</p>
+                <ul>
+                  <li><strong>속도:</strong> <span class="kpi-highlight">인프라 요청 처리 약 1일 → 6~9분</span> — 신청부터 완료까지 월별 중앙값(9월 9.2분 → 11월 5.8분)</li>
+                  <li><strong>사용량:</strong> <span class="kpi-highlight">오픈 이후 137건 처리</span>(2026.11 기준)</li>
+                  <li><strong>운영:</strong> 운영자의 일이 코드 작성·배포에서 PR 판단으로, 이력이 한 곳에 남아 인수인계가 쉬워짐</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">관련 자료</p>
+                <div class="project-slider" id="slider-barracks">
+                  <div class="slider-track">
+                    <div class="slide active">
+                      <a href="assets/project_barracks/shot-login.png" target="_blank" rel="noopener noreferrer"><img src="assets/project_barracks/shot-login.png" alt="배럭 첫 화면 — 인프라 신청부터 승인 · 배포까지 한곳에서" loading="lazy" class="is-diagram"></a>
+                      <p class="slide-caption">배럭 첫 화면 — 인프라 신청부터 승인 · 배포까지 한곳에서</p>
+                    </div>
+                    <div class="slide">
+                      <a href="assets/project_barracks/architecture.png" target="_blank" rel="noopener noreferrer"><img src="assets/project_barracks/architecture.png" alt="배럭 아키텍처 — 신청 · 승인 · 추적만, 배포는 기존 파이프라인" loading="lazy" class="is-diagram"></a>
+                      <p class="slide-caption">배럭 아키텍처 — 신청 · 승인 · 추적만, 배포는 기존 파이프라인</p>
+                    </div>
+                    <div class="slide">
+                      <a href="assets/project_barracks/barracks_outcome.png" target="_blank" rel="noopener noreferrer"><img src="assets/project_barracks/barracks_outcome.png" alt="오픈 이후 성과 — 처리 시간 · 처리 건수 · 피드백 반영(2026.11 기준)" loading="lazy" class="is-diagram"></a>
+                      <p class="slide-caption">오픈 이후 성과 — 처리 시간 · 처리 건수 · 피드백 반영(2026.11 기준)</p>
+                    </div>
+                  </div>
+                  <button class="slider-btn slider-prev" onclick="slideMove('slider-barracks',-1)" aria-label="이전">&#8249;</button>
+                  <button class="slider-btn slider-next" onclick="slideMove('slider-barracks', 1)" aria-label="다음">&#8250;</button>
+                  <div class="slider-dots">
+                    <span class="dot active" onclick="slideTo('slider-barracks',0)"></span>
+                    <span class="dot" onclick="slideTo('slider-barracks',1)"></span>
+                    <span class="dot" onclick="slideTo('slider-barracks',2)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5-7c AgentCore · OTel -->
+          <div class="project-card open" id="proj-5-7c">
+            <button class="project-header" onclick="toggleProject('proj-5-7c')" aria-expanded="true" aria-controls="proj-5-7c-body">
+              <h4 class="project-title">AWS Bedrock AgentCore 운영 및 OTel 기반 Grafana 통합 모니터링</h4>
+              <div class="project-meta">
+                <span class="project-period">2026</span>
+                <a href="https://boostbrothers.github.io/2026-10-06-ddocdoc-ai-agentcore-strands" class="project-ref-link" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">기술블로그(공동 작업) ↗</a>
+              </div>
+              <span class="project-toggle" aria-hidden="true">&#8963;</span>
+            </button>
+            <div class="project-summary">
+              <span class="achievement-tag tag-performance">기술 검토 → 운영 반영 약 1주</span>
+              <span class="achievement-tag tag-infra">LLM 기능 4종 운영</span>
+              <span class="achievement-tag tag-opensource">메트릭 → 트레이스 → 로그 한 동선</span>
+            </div>
+            <div class="project-body">
+              <div class="project-section">
+                <p class="project-section-title">도입 배경</p>
+                <p>리뷰 감성분석·요약, 상담 태그·CS 답변 추천 같은 LLM 기능을 AWS Bedrock AgentCore에서 운영하게 됐지만, AWS 기본 관측은 사내 Grafana 체계와 분리되어 있어 장애 원인·비용·응답 품질을 한곳에서 볼 수 없었습니다. 에이전트 개발은 백엔드 개발자가 맡고, 저는 인프라 구성·배포와 관측 체계를 맡아 함께 진행했습니다.</p>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">기술적 챌린지</p>
+                <ul>
+                  <li><strong>평가와 관측의 분리:</strong> 품질 평가는 CloudWatch에서만 동작해, 사내 스택으로만 보내면 평가 기능을 잃음.</li>
+                  <li><strong>끊긴 추적:</strong> 호출 서버 → 프록시 → Runtime → 모델 호출이 서로 다른 트레이스로 남아 잘못된 응답 한 건을 끝까지 따라갈 수 없음.</li>
+                  <li><strong>지표 표준 부재:</strong> Python 서비스 지표 이름이 사내 표준(Node)과 달라 공통 대시보드·알림을 쓸 수 없음.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">수행</p>
+                <ul>
+                  <li><strong>인프라 코드화:</strong> Runtime·IAM·ECR 등 AgentCore 인프라를 Terraform으로 일원화해 관리.</li>
+                  <li><strong>평가 운영:</strong> 평가 기준(골든셋·온라인 평가)은 백엔드 개발자가 설계, 저는 주간 배치 평가를 Argo CronWorkflow로 자동화·실패 시 Slack 알림.</li>
+                  <li><strong>메트릭 표준화:</strong> Python OTel 메트릭 모듈로 HTTP·런타임 지표 이름을 Node 표준에 맞춰 공통 대시보드·에러율 알림에 편입.</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">결과</p>
+                <ul>
+                  <li><strong>속도:</strong> <span class="kpi-highlight">기술 검토 → 운영 반영 약 1주</span> — 이후 LLM 기능 4종을 같은 구성으로 운영</li>
+                  <li><strong>원인 분석:</strong> 메트릭 이상 → 트레이스 → 로그 원문(trace_id로 연결)으로 이어지는 추적 동선 확보</li>
+                  <li><strong>비용:</strong> <span class="kpi-highlight">모델 토큰이 비용의 80~95%</span> — 실측으로 확인, 기존 리소스 활용 및 비용 추적</li>
+                </ul>
+              </div>
+              <div class="project-section">
+                <p class="project-section-title">관련 자료</p>
+                <div class="project-slider" id="slider-agentcore">
+                  <div class="slider-track">
+                    <div class="slide active">
+                      <a href="assets/project_agentcore/agentcore_arch.png" target="_blank" rel="noopener noreferrer"><img src="assets/project_agentcore/agentcore_arch.png" alt="AgentCore 운영 구성 — 요청 흐름 · Terraform 일원화 · 관측 동선" loading="lazy" class="is-diagram"></a>
+                      <p class="slide-caption">AgentCore 운영 구성 — 요청 흐름 · Terraform 일원화 · 관측 동선</p>
+                    </div>
+                    <div class="slide">
+                      <a href="assets/project_agentcore/agentcore_weekly_eval.png" target="_blank" rel="noopener noreferrer"><img src="assets/project_agentcore/agentcore_weekly_eval.png" alt="주간 커스텀 평가 — 기존 배치로 매주 채점해 품질 개선" loading="lazy" class="is-diagram"></a>
+                      <p class="slide-caption">주간 커스텀 평가 — 기존 배치로 매주 채점해 품질 개선</p>
+                    </div>
+                  </div>
+                  <button class="slider-btn slider-prev" onclick="slideMove('slider-agentcore',-1)" aria-label="이전">&#8249;</button>
+                  <button class="slider-btn slider-next" onclick="slideMove('slider-agentcore', 1)" aria-label="다음">&#8250;</button>
+                  <div class="slider-dots">
+                    <span class="dot active" onclick="slideTo('slider-agentcore',0)"></span>
+                    <span class="dot" onclick="slideTo('slider-agentcore',1)"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- 5-7b AI 간식대장 -->
           <div class="project-card open" id="proj-5-7b">
             <button class="project-header" onclick="toggleProject('proj-5-7b')" aria-expanded="true" aria-controls="proj-5-7b-body">
