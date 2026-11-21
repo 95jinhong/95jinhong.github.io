@@ -432,6 +432,7 @@
       font-size: 0.72rem;
       color: #bbb;
     }
+    .proj-link { font-size: 0.7rem; font-weight: 500; margin-left: 6px; white-space: nowrap; }
     /* Section title label ([도입계기]·[수행]·[역할]·[성과]) */
     .proj-sec-title {
       font-size: 0.74rem;
@@ -589,7 +590,7 @@
   <header class="profile">
     <div class="profile-info">
       <h1 class="profile-name">박진홍</h1>
-      <div class="profile-role">DevOps Engineer &nbsp;·&nbsp; 5년차 <strong>(5년 3개월)</strong></div>
+      <div class="profile-role">DevOps Engineer &nbsp;·&nbsp; 5년차 <strong>(5년 10개월)</strong></div>
       <div class="profile-tagline">안정적인 인프라와 자동화된 배포 파이프라인으로 개발팀의 속도와 신뢰성을 높이는 DevOps Engineer</div>
       <div class="profile-contacts">
         <!-- Row 1: Email · Phone · GitHub · LinkedIn -->
@@ -723,13 +724,14 @@
     <div class="company">
       <div class="company-head">
         <span class="company-name"><img class="company-icon" src="resume/ddocdoc-icon.png" alt="" aria-hidden="true" />비브로스 (똑닥)</span>
-        <span class="company-period">2022.12 ~ 현재 <span class="dur">(3년 5개월)</span></span>
+        <span class="company-period">2022.12 ~ 현재 <span class="dur">(4년)</span></span>
       </div>
       <div class="company-env">누적 가입자 1,000만명 · MAU 200만명 헬스케어 O2O 플랫폼<span class="sep">—</span>DevOps Engineer</div>
 
       <div class="work-box">
         <p class="proj-sec-title">[주요 업무]</p>
         <ol class="work-list">
+          <li><strong>사내 인프라 플랫폼 '배럭' 설계·구축</strong> — 티켓으로 받던 인프라 요청을 셀프서비스로 전환, 요청 처리 <span class="kpi">약 1일 → 6~9분</span> · 오픈 이후 <span class="kpi">137건</span> 처리</li>
           <li><strong>인프라 아키텍처·비용 최적화</strong> — ARM(Graviton)·Karpenter·SaaS→OSS 전환으로 인프라 전체 월 비용 <span class="kpi">20% 절감</span> 및 Observability 비용 <span class="kpi">70% 절감</span></li>
           <li><strong>무중단 클러스터 업데이트</strong> — Blue-Green→Multi-Target 전환으로 업데이트 소요 시간 <span class="kpi">10h → 5min</span> 단축, EKS 1.25→1.35 3년간 무중단 운영 유지</li>
           <li><strong>SLI/SLO·통합 Observability 체계</strong> — Grafana Stack 단일 관제로 <span class="kpi">SLO 99.9% 3개월 연속 달성</span>, <span class="kpi">P90 응답 &lt;1s</span>, DB 성능 <span class="kpi">30% 향상</span></li>
@@ -739,6 +741,63 @@
       </div>
 
       <p class="proj-group-title">Projects</p>
+
+      <div class="project">
+        <div class="proj-head">
+          <span class="proj-title">사내 인프라 플랫폼 '배럭' 구축 및 운영 <a class="proj-link" href="https://boostbrothers.github.io/2026-10-05-devops-barracks-platform" target="_blank" rel="noopener noreferrer">기술블로그 ↗</a></span>
+          <span class="proj-period">2026.04 — 현재</span>
+        </div>
+        <p class="proj-sec-title">[도입계기]</p>
+        <ul class="blist">
+          <li>인프라 요청을 Jira 티켓으로 받아 운영자가 직접 코드 수정·배포</li>
+          <li>진행 상황은 티켓 댓글·DM으로만 공유, 처리 속도와 범위가 담당자 일정·도메인 지식에 제한</li>
+        </ul>
+        <p class="proj-sec-title">[역할]</p>
+        <ul class="blist">
+          <li>테크 스펙·설계·구현·운영 주도 — AI-DLC로 <strong>2주 PoC 단독 개발</strong>(설계 5시간·코드 8일) 후 공동 개발로 확장</li>
+        </ul>
+        <p class="proj-sec-title">[수행]</p>
+        <ul class="blist">
+          <li><strong>컨트롤러로서의 플랫폼</strong> — 배럭은 신청·승인·추적만, 실제 배포 자동화는 기존 GitHub Actions·ArgoCD(약 400개 앱)가 수행</li>
+          <li><strong>안전장치</strong> — plan 성공 전 승인 불가·변경 시 재승인, 네이밍·기본값은 폼이 강제해 비개발자도 신청 가능</li>
+          <li><strong>신청 항목</strong> — 서버(API·Consumer·Batch)·피크타임 스케일, Kafka 토픽·ACL·커넥터, AWS·MongoDB 접근 권한(IRSA)</li>
+          <li><strong>고도화(진행 중)</strong> — 피드백 40여 건 반영, 배포·배치 모니터링·운영 지표로 옵저버빌리티 구성, AI Agent 기반 대화형 신청·운영 질문 기능 추가 중</li>
+        </ul>
+        <p class="proj-sec-title">[성과]</p>
+        <ul class="blist">
+          <li><strong>속도</strong> — 인프라 요청 처리 약 1일 → 6~9분(월별 중앙값 9.2분 → 5.8분)</li>
+          <li><strong>사용량</strong> — 오픈 이후 137건 처리(2026.11 기준)</li>
+          <li><strong>운영</strong> — 운영자는 PR 판단만, 이력이 한 곳에 남아 인수인계 용이</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="proj-head">
+          <span class="proj-title">AWS Bedrock AgentCore 운영 및 OTel 기반 Grafana 통합 모니터링 <a class="proj-link" href="https://boostbrothers.github.io/2026-10-06-ddocdoc-ai-agentcore-strands" target="_blank" rel="noopener noreferrer">기술블로그(공동 작업) ↗</a></span>
+          <span class="proj-period">2026.08 — 현재</span>
+        </div>
+        <p class="proj-sec-title">[도입계기]</p>
+        <ul class="blist">
+          <li>리뷰 감성분석·요약, 상담 태그·CS 답변 추천 등 LLM 기능을 AgentCore에서 운영 시작</li>
+          <li>AWS 기본 관측이 사내 Grafana 체계와 분리돼 장애 원인·비용·응답 품질을 한곳에서 볼 수 없음</li>
+        </ul>
+        <p class="proj-sec-title">[역할]</p>
+        <ul class="blist">
+          <li>백엔드 개발자와 협업 — 에이전트 개발은 백엔드, 인프라 구성·배포·관측 체계·메트릭 표준화 담당</li>
+        </ul>
+        <p class="proj-sec-title">[수행]</p>
+        <ul class="blist">
+          <li><strong>인프라 코드화</strong> — Runtime·IAM·ECR 등 AgentCore 인프라를 Terraform으로 일원화 관리</li>
+          <li><strong>평가 운영</strong> — 주간 배치 평가 Argo CronWorkflow 자동화·실패 시 Slack 알림(평가 기준 설계는 백엔드 개발자)</li>
+          <li><strong>메트릭 표준화</strong> — Python OTel 메트릭 모듈로 HTTP·런타임 지표 이름을 Node 표준에 맞춰 공통 대시보드·에러율 알림 편입</li>
+        </ul>
+        <p class="proj-sec-title">[성과]</p>
+        <ul class="blist">
+          <li><strong>속도</strong> — 기술 검토 → 운영 반영 약 1주, 이후 LLM 기능 4종 운영</li>
+          <li><strong>원인 분석</strong> — 메트릭 이상 → 트레이스 → 로그 원문(trace_id 연결)으로 이어지는 추적 동선 확보</li>
+          <li><strong>비용</strong> — 모델 토큰이 비용의 80~95%임을 실측, 기존 리소스 활용 및 비용 추적</li>
+        </ul>
+      </div>
 
       <div class="project">
         <div class="proj-head">
@@ -1166,6 +1225,7 @@
         <span class="spill">Kubernetes</span>
         <span class="spill">Helm</span>
         <span class="spill">Karpenter</span>
+        <span class="spill">Bedrock AgentCore</span>
       </div>
 
       <div class="skill-label">IaC / CI·CD</div>
