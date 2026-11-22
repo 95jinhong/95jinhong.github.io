@@ -432,7 +432,6 @@
       font-size: 0.72rem;
       color: #bbb;
     }
-    .proj-link { font-size: 0.7rem; font-weight: 500; margin-left: 6px; white-space: nowrap; }
     /* Section title label ([도입계기]·[수행]·[역할]·[성과]) */
     .proj-sec-title {
       font-size: 0.74rem;
@@ -515,6 +514,11 @@
     .btm-item:last-child { margin-bottom: 0; }
     .btm-main { font-size: 0.83rem; font-weight: 600; color: #222; line-height: 1.4; }
     .btm-sub { font-size: 0.76rem; color: #999; margin-top: 1px; }
+    /* ─── Tech Blog (본인 저자 글만) ─── */
+    .blog-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 28px; }
+    .blog-list .btm-item { margin-bottom: 0; }
+    .blog-list .btm-main a { color: #222; text-decoration: none; }
+    .blog-list .btm-main a:hover { text-decoration: underline; }
     .badge {
       display: inline-block;
       font-size: 0.65rem;
@@ -533,6 +537,7 @@
       .strength-item { grid-template-columns: 1fr; }
       .str-kpi { text-align: left; }
       .btm-grid { grid-template-columns: 1fr; gap: 20px; }
+      .blog-list { grid-template-columns: 1fr; }
       .profile-name { font-size: 1.7rem; }
     }
 
@@ -744,7 +749,7 @@
 
       <div class="project">
         <div class="proj-head">
-          <span class="proj-title">사내 인프라 플랫폼 '배럭' 구축 및 운영 <a class="proj-link" href="https://boostbrothers.github.io/2026-10-05-devops-barracks-platform" target="_blank" rel="noopener noreferrer">기술블로그 ↗</a></span>
+          <span class="proj-title">사내 인프라 플랫폼 '배럭' 구축 및 운영</span>
           <span class="proj-period">2026.04 — 현재</span>
         </div>
         <p class="proj-sec-title">[도입계기]</p>
@@ -773,7 +778,7 @@
 
       <div class="project">
         <div class="proj-head">
-          <span class="proj-title">AWS Bedrock AgentCore 운영 및 OTel 기반 Grafana 통합 모니터링 <a class="proj-link" href="https://boostbrothers.github.io/2026-10-06-ddocdoc-ai-agentcore-strands" target="_blank" rel="noopener noreferrer">기술블로그(공동 작업) ↗</a></span>
+          <span class="proj-title">AWS Bedrock AgentCore 운영 및 OTel 기반 Grafana 통합 모니터링</span>
           <span class="proj-period">2026.08 — 현재</span>
         </div>
         <p class="proj-sec-title">[도입계기]</p>
@@ -1323,6 +1328,29 @@
           <div class="btm-main">창업 아이디어 <span class="badge silver">은상</span></div>
           <div class="btm-sub">한림대학교 창업교육센터</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Blog — 본인이 저자인 글만 -->
+  <section class="section">
+    <h2 class="sec-title">Tech Blog</h2>
+    <div class="blog-list">
+      <div class="btm-item">
+        <div class="btm-main"><a href="https://boostbrothers.github.io/2026-10-05-devops-barracks-platform" target="_blank" rel="noopener noreferrer">사내 인프라 플랫폼 배럭 구축기 ↗</a></div>
+        <div class="btm-sub">2026.10 · 사내 인프라 플랫폼 '배럭' 구축 및 운영</div>
+      </div>
+      <div class="btm-item">
+        <div class="btm-main"><a href="https://boostbrothers.github.io/2025-04-07-devops-eks-new-upgrade" target="_blank" rel="noopener noreferrer">EKS 1.32 업데이트 그리고 새로운 업데이트 방식 ↗</a></div>
+        <div class="btm-sub">2025.04 · EKS 무중단 업데이트 전략 수립</div>
+      </div>
+      <div class="btm-item">
+        <div class="btm-main"><a href="https://boostbrothers.github.io/2023-11-01-infra-karpenter-migration" target="_blank" rel="noopener noreferrer">AWS Node Auto Scaler Karpenter 도입기 ↗</a></div>
+        <div class="btm-sub">2023.11 · 인프라 아키텍처 고도화 및 비용 절감</div>
+      </div>
+      <div class="btm-item">
+        <div class="btm-main"><a href="https://boostbrothers.github.io/2023-07-16-infra-eks-update" target="_blank" rel="noopener noreferrer">Gitops를 활용한 AWS EKS Blue-Green 업데이트 적용기 ↗</a></div>
+        <div class="btm-sub">2023.07 · EKS 무중단 업데이트 전략 수립</div>
       </div>
     </div>
   </section>
