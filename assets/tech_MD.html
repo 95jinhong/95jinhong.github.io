@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 14px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html { font-size: 14px; -webkit-print-color-adjust: exact; print-color-adjust: exact; scroll-behavior: smooth; }
     body {
       background: #fff;
       color: #1a1a1a;
@@ -251,6 +251,14 @@
       gap: 8px 20px;
     }
     .strength-item:last-child { border-bottom: none; }
+    /* 요약 → 상세 이동: 회사명 · 핵심역량 카드를 누르면 해당 경력/프로젝트로 이동(점선 밑줄 = 이동 가능) */
+    a.jump, a.strength-item { color: inherit; text-decoration: none; }
+    a.jump, a.strength-item .str-title {
+      text-decoration: underline dotted #b8c0cc;
+      text-underline-offset: 3px;
+    }
+    a.jump:hover, a.strength-item:hover .str-title { color: #2563eb; text-decoration: underline solid #2563eb; }
+    .company, .project { scroll-margin-top: 16px; }
     .str-left { }
     .str-title {
       font-size: 0.92rem;
@@ -357,8 +365,7 @@
     }
     .work-box {
       background: #f0fdf4;
-      border-left: 3px solid #10b981;
-      border-radius: 0 6px 6px 0;
+      border-radius: 6px;
       padding: 8px 14px 10px;
       margin-bottom: 18px;
     }
@@ -649,19 +656,19 @@
     <h2 class="sec-title">Career Summary</h2>
     <table class="career-table">
       <tr>
-        <td class="c-name">비브로스 (똑닥)</td>
+        <td class="c-name"><a class="jump" href="#exp-bbros">비브로스 (똑닥)</a></td>
         <td class="c-type">헬스케어 O2O 플랫폼 (MAU 200만)</td>
         <td class="c-role">DevOps Engineer</td>
         <td class="c-period">2022.12 ~ 현재</td>
       </tr>
       <tr>
-        <td class="c-name">Cloit</td>
+        <td class="c-name"><a class="jump" href="#exp-cloit">Cloit</a></td>
         <td class="c-type">MSP · AI 솔루션 전문기업</td>
         <td class="c-role">Cloud Engineer</td>
         <td class="c-period">2022.07 ~ 2022.12</td>
       </tr>
       <tr>
-        <td class="c-name">OSC Korea</td>
+        <td class="c-name"><a class="jump" href="#exp-osc">OSC Korea</a></td>
         <td class="c-type">오픈소스·클라우드 기술 전문기업</td>
         <td class="c-role">DevOps Engineer</td>
         <td class="c-period">2021.03 ~ 2022.06</td>
@@ -674,7 +681,7 @@
     <h2 class="sec-title">Core Competencies</h2>
     <div class="strengths">
 
-      <div class="strength-item">
+      <a class="strength-item" href="#proj-cost">
         <div class="str-left">
           <div class="str-title">인프라 비용 절감</div>
           <div class="str-desc">SaaS→OSS 전환, ARM(Graviton) 이전, Karpenter 노드풀 전략으로 비용 구조를 근본적으로 개선했습니다.</div>
@@ -683,9 +690,9 @@
           <div class="str-kpi-val">20% 절감</div>
           <div class="str-kpi-lbl">인프라 전체 비용</div>
         </div>
-      </div>
+      </a>
 
-      <div class="strength-item">
+      <a class="strength-item" href="#proj-eks-update">
         <div class="str-left">
           <div class="str-title">무중단 클러스터 업데이트</div>
           <div class="str-desc">Blue-Green→Multi-Target 전략으로 고도화해 Route53/ALB 가중치 기반 점진 전환과 즉시 롤백 체계를 확보했습니다.</div>
@@ -694,9 +701,9 @@
           <div class="str-kpi-val">10h → 5min</div>
           <div class="str-kpi-lbl">업데이트 소요 시간</div>
         </div>
-      </div>
+      </a>
 
-      <div class="strength-item">
+      <a class="strength-item" href="#proj-security">
         <div class="str-left">
           <div class="str-title">보안 탐지 및 대응 자동화</div>
           <div class="str-desc">클라우드/쿠버네티스 보안 탐지·알림·리포트를 자동화하고, WAF·이미지 스캔·Parameter Store로 보안 체계를 고도화했습니다.</div>
@@ -705,9 +712,9 @@
           <div class="str-kpi-val">70%+ 개선</div>
           <div class="str-kpi-lbl">보안 대응 속도</div>
         </div>
-      </div>
+      </a>
 
-      <div class="strength-item">
+      <a class="strength-item" href="#proj-observability">
         <div class="str-left">
           <div class="str-title">오픈소스 기반 통합 Observability</div>
           <div class="str-desc">Prometheus·Thanos·Grafana Stack(Loki·Tempo·Alloy)·OpenTelemetry로 메트릭-로그-트레이스를 Grafana All-in-one 으로 통합했습니다.</div>
@@ -716,7 +723,7 @@
           <div class="str-kpi-val">통합 관제 · 70% 절감</div>
           <div class="str-kpi-lbl">Observability 비용(vs SaaS)</div>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -726,7 +733,7 @@
     <h2 class="sec-title">Work Experience</h2>
 
     <!-- 비브로스 -->
-    <div class="company">
+    <div class="company" id="exp-bbros">
       <div class="company-head">
         <span class="company-name"><img class="company-icon" src="resume/ddocdoc-icon.png" alt="" aria-hidden="true" />비브로스 (똑닥)</span>
         <span class="company-period">2022.12 ~ 현재 <span class="dur">(4년)</span></span>
@@ -858,7 +865,7 @@
         </ul>
       </div>
 
-      <div class="project">
+      <div class="project" id="proj-cost">
         <div class="proj-head">
           <span class="proj-title">인프라 아키텍처 고도화 및 비용 절감</span>
           <span class="proj-period">2025</span>
@@ -893,7 +900,7 @@
         </ul>
       </div>
 
-      <div class="project">
+      <div class="project" id="proj-security">
         <div class="proj-head">
           <span class="proj-title">AWS 보안 서비스를 활용한 위협 탐지 및 대응 자동화</span>
           <span class="proj-period">2025</span>
@@ -1003,7 +1010,7 @@
         </ul>
       </div>
 
-      <div class="project">
+      <div class="project" id="proj-observability">
         <div class="proj-head">
           <span class="proj-title">통합 Observability 체계 구축</span>
           <span class="proj-period">2023 — 2024</span>
@@ -1030,7 +1037,7 @@
         </ul>
       </div>
 
-      <div class="project">
+      <div class="project" id="proj-eks-update">
         <div class="proj-head">
           <span class="proj-title">EKS 무중단 업데이트 전략 수립</span>
           <span class="proj-period">2023 — 2025</span>
@@ -1059,7 +1066,7 @@
     </div>
 
     <!-- 클로잇 -->
-    <div class="company cloit-company">
+    <div class="company cloit-company" id="exp-cloit">
       <div class="company-head">
         <span class="company-name"><img class="company-icon" src="resume/cloit-icon.png" alt="" aria-hidden="true" />Cloit</span>
         <span class="company-period">2022.07 ~ 2022.12 <span class="dur">(6개월)</span></span>
@@ -1132,7 +1139,7 @@
     </div>
 
     <!-- OSC Korea -->
-    <div class="company osc-company">
+    <div class="company osc-company" id="exp-osc">
       <div class="company-head">
         <span class="company-name"><img class="company-icon" src="resume/osckorea-icon.png" alt="" aria-hidden="true" />OSC Korea</span>
         <span class="company-period">2021.03 ~ 2022.06 <span class="dur">(1년 4개월)</span></span>
