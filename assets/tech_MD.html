@@ -643,7 +643,7 @@
 
       <p>비브로스에서는 SaaS→OSS 전환·ARM(Graviton)·Karpenter 노드풀 전략으로 인프라 전체 비용을 20% 절감하고, Blue-Green→Multi-Target 전략으로 EKS 업데이트 소요 시간을 10시간에서 5분으로 단축했으며, Terraform IaC와 오픈소스 변경 및 고도화로 관측 비용 70% 절감 및 SLO 99.9% 체계를 도입, GuardDuty·WAF와 보안 가드레일로 보안 대응 속도를 70% 이상 개선하는 등 DevOps 운영 전반의 자동화·표준화에 기여해왔습니다.</p>
 
-      <p>저는 클라우드 아키텍처 설계부터 K8s 환경 구축, GitOps 배포 자동화, 비용·보안·관측 최적화까지 DevOps 엔지니어링 전 영역을 경험하며, 개발자가 인프라 세부 사항을 걱정하지 않고 셀프서비스로 배포할 수 있는 표준화된 파이프라인과, 장애 예방·자동화·비용 효율화가 동시에 작동하는 운영 체계를 지향해왔습니다.</p>
+      <p>저는 클라우드 아키텍처 설계부터 K8s 환경 구축, GitOps 배포 자동화, 비용·보안·관측 최적화까지 DevOps 엔지니어링 전 영역을 경험하며, 개발자가 인프라 세부 사항을 걱정하지 않고 셀프서비스로 배포할 수 있는 표준화된 파이프라인과, 장애 예방·자동화·비용 효율화가 동시에 작동하는 운영 체계를 지향해왔으며, 이를 사내 인프라 플랫폼 '배럭'으로 구현해 인프라 요청을 셀프서비스로 전환했습니다.</p>
 
       <p>최근에는 AI를 활용한 DevOps 효율화에 관심을 두고, AI 기반 Terraform 모듈 리팩토링, OpenTelemetry 메트릭을 활용한 사전 장애 탐지 체계 고도화, 인프라 보안 모의 테스트를 통한 취약점 사전 식별 등을 탐구하고 있습니다.</p>
 
@@ -695,7 +695,7 @@
       <a class="strength-item" href="#proj-eks-update">
         <div class="str-left">
           <div class="str-title">무중단 클러스터 업데이트</div>
-          <div class="str-desc">Blue-Green→Multi-Target 전략으로 고도화해 Route53/ALB 가중치 기반 점진 전환과 즉시 롤백 체계를 확보했습니다.</div>
+          <div class="str-desc">Blue-Green→Multi-Target 전략으로 고도화해 ALB 타깃그룹 가중치 기반 점진 전환과 즉시 롤백 체계를 확보했습니다.</div>
         </div>
         <div class="str-kpi">
           <div class="str-kpi-val">10h → 5min</div>
@@ -766,11 +766,11 @@
         </ul>
         <p class="proj-sec-title">[역할]</p>
         <ul class="blist">
-          <li>테크 스펙·설계·구현·운영 주도 — AI-DLC로 <strong>2주 PoC 단독 개발</strong>(설계 5시간·코드 8일) 후 공동 개발로 확장</li>
+          <li>테크 스펙·설계·구현·운영 주도 — AI-DLC로 <strong>2주 PoC 단독 개발</strong>(React·Go·PostgreSQL, 설계 5시간·코드 8일) 후 공동 개발로 확장</li>
         </ul>
         <p class="proj-sec-title">[수행]</p>
         <ul class="blist">
-          <li><strong>컨트롤러로서의 플랫폼</strong> — 배럭은 신청·승인·추적만, 실제 배포 자동화는 기존 GitHub Actions·ArgoCD(약 400개 앱)가 수행</li>
+          <li><strong>컨트롤러로서의 플랫폼</strong> — 배포 권한을 가진 시스템을 늘리지 않도록 배럭은 신청·승인·추적만, 실제 배포 자동화는 기존 GitHub Actions·ArgoCD(약 400개 앱)가 수행</li>
           <li><strong>안전장치</strong> — plan 성공 전 승인 불가·변경 시 재승인, 네이밍·기본값은 폼이 강제해 비개발자도 신청 가능</li>
           <li><strong>신청 항목</strong> — 서버(API·Consumer·Batch)·피크타임 스케일, Kafka 토픽·ACL·커넥터, AWS·MongoDB 접근 권한(IRSA)</li>
           <li><strong>고도화(진행 중)</strong> — 피드백 40여 건 반영, 배포·배치 모니터링·운영 지표로 옵저버빌리티 구성, AI Agent 기반 대화형 신청·운영 질문 기능 추가 중</li>
@@ -916,8 +916,9 @@
         </ul>
         <p class="proj-sec-title">[수행]</p>
         <ul class="blist">
-          <li>GuardDuty 탐지 → Security Hub 집계 → Amazon Q 분석 → Slack/Email 알림·일일 리포트 자동 생성 파이프라인 구성</li>
-          <li>WAF 도입(웹 크롤링·XSS·SQL Injection 차단 룰·TLS 강화), Trivy 이미지 스캔·SonarQube 정적 분석 CI 파이프라인 통합</li>
+          <li>GuardDuty 탐지 → Security Hub 집계 → Amazon Q 분석 → Slack/Email 알림·일일 리포트 자동 생성 파이프라인 구성 — 보안 이벤트를 외부 서비스에 노출하지 않도록 AWS 안에서 분석(Amazon Q 채택)</li>
+          <li>WAF 도입(웹 크롤링·XSS·SQL Injection 차단 룰·TLS 강화) — Count 모드로 오탐 범위 확인·예외 룰 구성 후 Block 전환</li>
+          <li>Trivy 이미지 스캔·SonarQube 정적 분석 CI 파이프라인 통합</li>
           <li>ArgoCD Helm Secret을 GitHub 평문 저장 → AWS Parameter Store 암호화 전환, 민감정보 접근 통제 강화</li>
         </ul>
         <p class="proj-sec-title">[성과]</p>
@@ -943,8 +944,8 @@
         </ul>
         <p class="proj-sec-title">[수행]</p>
         <ul class="blist">
-          <li>OpenTelemetry 기반 트레이스 정보와 Tempo 로그를 활용해 비즈니스 메트릭(커스텀) 설계 — 사용자 가입·예약 완료율 등 서비스 핵심 지표 Grafana 대시보드로 구성</li>
-          <li>SLI(가용성·P90 응답시간) 정의 및 SLO 목표(99.9%) 수립 — Error Budget 소진 알림 체계 구축 및 배포 제한 기간 자동화</li>
+          <li>개발팀과 협업해 핵심 비즈니스 플로우의 성공률·응답시간을 OpenTelemetry Counter/Gauge로 계측, Tempo 트레이스와 연계 — 사용자 가입·예약 완료율 등 서비스 핵심 지표 Grafana 대시보드로 구성</li>
+          <li>SLI(가용성·P90 응답시간) 정의 및 SLO 목표(99.9%) 수립 — Error Budget 소진률에 따라 Slack 채널 → 긴급도 기반 개인 멘션으로 이어지는 다단계 알림 체계 구축 및 배포 제한 기간 자동화</li>
           <li>SLO 정기 리뷰 미팅 운영 — Slow Query·Query Targeting 개선으로 DB 처리 성능 30% 향상, P90 응답시간 평균 1초 미만 달성</li>
         </ul>
         <p class="proj-sec-title">[성과]</p>
@@ -999,7 +1000,7 @@
         <p class="proj-sec-title">[수행]</p>
         <ul class="blist">
           <li>AWS 리소스(EKS·VPC·IAM·SG 등)를 Terraform 코드화·모듈화, 환경/서비스별 Workspace 분리 관리</li>
-          <li>ArgoCD와 Terraform 리소스 소유권 경계 재정의·문서화로 충돌 방지</li>
+          <li>Terraform 정리 중 ArgoCD가 참조하던 리소스가 제거된 일을 계기로 두 도구의 리소스 소유권 경계 재정의·문서화 — 재발 방지</li>
           <li>EKS IRSA 모듈화로 IAM 권한 코드 정의 — 수동 설정 오류 방지 및 신규 서비스 환경 구성 시간 단축</li>
           <li>TFC → GitHub Actions+S3 Lock 이관, AccessKey → OIDC 인증 전환으로 비용·보안 동시 개선</li>
         </ul>
@@ -1049,12 +1050,13 @@
         <p class="proj-sec-title">[역할]</p>
         <ul class="blist">
           <li>K8s·EKS API 호환성 사전 검증 및 add-on·3rd-party Chart 순차 업데이트 검증 담당</li>
-          <li>DNS TTL 최소화·ALB 타깃 가중치 전환 시나리오 설계 및 Terraform IRSA 모듈 구성</li>
+          <li>Route53 → ALB 타깃그룹 가중치 전환 시나리오 설계 및 Terraform IRSA 모듈 구성</li>
         </ul>
         <p class="proj-sec-title">[수행]</p>
         <ul class="blist">
-          <li>Blue-Green → Multi-Target 방식 전환 — 신/구 클러스터 동시 유지, Route53/ALB 가중치로 트래픽 10%→50%→100% 점진 전환 후 구 클러스터 제거</li>
-          <li>DNS TTL을 최소화하고 ALB 타깃 전환 시나리오를 사전 설계 — 다운타임 없이 업데이트, 문제 시 가중치 0%로 즉시 롤백</li>
+          <li>Blue-Green → Multi-Target 방식 전환 — 신/구 클러스터 동시 유지, ALB 타깃그룹 가중치로 트래픽 10%→50%→100% 점진 전환 후 구 클러스터 제거</li>
+          <li>초기 Route53 레코드 전환은 클라이언트 DNS 캐시로 즉시 전환이 안 돼 ALB 타깃그룹 가중치 방식으로 고도화 — 다운타임 없이 업데이트, 문제 시 가중치 0%로 즉시 롤백</li>
+          <li>순차 전환 스크립트로 Kafka 컨슈머 리밸런싱·배치 중복 실행 방지</li>
           <li>매니지먼트 계정 ArgoCD 기반 통합 배포 체계 구성 — 멀티 클러스터 배포 일관성 확보</li>
         </ul>
         <p class="proj-sec-title">[성과]</p>
@@ -1150,7 +1152,7 @@
         <p class="proj-sec-title">[주요 업무]</p>
         <ol class="work-list">
           <li><strong>커머스 MSA 인프라 설계·구축</strong> — NS홈쇼핑 K8s/MSA 전환으로 메인 로딩 <span class="kpi">10배 향상</span>, <span class="kpi">동시 접속 2만 유저 안정성 확보</span></li>
-          <li><strong>온프레미스 기반 K8s 고도화</strong> — AIMS(Solum) Docker → K8s 변경, Probe·Graceful Shutdown 검증으로 업데이트 속도 <span class="kpi">45% 향상</span>, 처리량(TPS) <span class="kpi">80% 향상</span></li>
+          <li><strong>온프레미스 기반 K8s 고도화</strong> — AIMS(Solum) Docker → K8s 전환·Probe·Graceful Shutdown 검증, Pod 비율 최적화·메시지 분산 처리로 업데이트 속도 <span class="kpi">45% 향상</span>, 처리량(TPS) <span class="kpi">약 80% 향상</span></li>
         </ol>
       </div>
 
@@ -1259,6 +1261,7 @@
         <span class="spill">OpenTelemetry</span>
         <span class="spill">Loki</span>
         <span class="spill">Tempo</span>
+        <span class="spill">Alloy</span>
         <span class="spill">EFK</span>
         <span class="spill">Opensearch</span>
       </div>
@@ -1266,6 +1269,7 @@
       <div class="skill-label">Data / Message</div>
       <div class="skill-pills">
         <span class="spill">PostgreSQL</span>
+        <span class="spill">MongoDB</span>
         <span class="spill">MySQL</span>
         <span class="spill">Redis</span>
         <span class="spill">Kafka</span>
@@ -1287,8 +1291,6 @@
       <div class="skill-pills">
         <span class="spill">Go</span>
         <span class="spill">Istio</span>
-        <span class="spill">Kubecost</span>
-        <span class="spill">Backstage</span>
         <span class="spill">Infisical</span>
       </div>
     </div>
