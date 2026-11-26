@@ -2599,7 +2599,7 @@
               <span class="project-toggle" aria-hidden="true">&#8963;</span>
             </button>
             <div class="project-summary">
-              <span class="achievement-tag tag-performance">10시간 → 5분</span>
+              <span class="achievement-tag tag-performance">실트래픽 단계 검증</span>
               <span class="achievement-tag tag-performance">무중단 업데이트</span>
               <span class="achievement-tag tag-performance">롤백 체계 구성</span>
             </div>
@@ -2638,7 +2638,7 @@
               <div class="project-section">
                 <p class="project-section-title">결과</p>
                 <ul>
-                  <li><span class="kpi-highlight">업데이트 소요 시간 10h → 5min으로 단축</span>(기존 In-place 3단계 업데이트·검증 → 트래픽 전환·정상 트래픽 확인까지) — Multi-Target 가중치 전환 방식으로 달성</li>
+                  <li>신·구 클러스터를 병행하는 <span class="kpi-highlight">Blue-Green 방식으로 새 버전을 실트래픽에서 단계 검증</span>한 뒤 전환, 이상 시 가중치 0%로 즉시 롤백</li>
                   <li><strong>EKS 1.25 → 1.35</strong>까지 3년간 동일 방식 유지, <strong>매년 1회 3개 버전</strong>을 한 번에 업데이트하며 무중단 운영</li>
                   <li>기존에는 업데이트 기간 동안 배포 프리징이 필요했으나, Blue-Green 전환 이후에는 <span class="kpi-highlight">업데이트 중에도 애자일 배포·핫픽스 대응이 가능</span>한 체계 확보</li>
                 </ul>
