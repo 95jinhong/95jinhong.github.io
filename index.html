@@ -2471,6 +2471,7 @@
                   <li>레거시 리소스 Import 범위·순서 결정: 수작업으로 생성된 기존 리소스를 어느 단위까지, 어떤 순서로 코드화할지 기준 부재. 사용 중/미사용 리소스 판별 어려움, EKS처럼 배포 목적 리소스와 서비스가 직접 참조하는 리소스 간 모듈 경계를 사전 정의 필요.</li>
                   <li><strong>ArgoCD와의 리소스 소유권 충돌:</strong> ArgoCD가 자동 생성·관리하는 리소스와 Terraform 관리 리소스의 경계가 모호해 충돌 가능성 상존. 실제로 Terraform 정리 과정에서 ArgoCD가 참조 중인 리소스가 의도치 않게 제거되는 문제 발생.</li>
                   <li>State 백엔드 전환 — 이관 신뢰성과 Lock 정합성: TFC → GitHub + S3 전환 시 기존 State 무중단 이관, S3 Lock 신뢰성 확인, OIDC 인증 전환까지 동시 검토 필요.</li>
+                  <li><strong>공식 provider가 없는 정책의 코드화:</strong> DB를 MSA로 분리하며 DB 접근제어(QueryPie) 정책 변경이 잦아졌지만, 공식 Terraform provider가 없고 import도 불가해 콘솔 수작업 관리에 머묾.</li>
                 </ul>
               </div>
               <div class="project-section">
@@ -2480,6 +2481,7 @@
                   <li><strong>TFC → GitHub + S3 전환 (가격 정책 변경 대응):</strong> TFC 가격 정책 변경 후 비용 효율 재검토. S3 네이티브 Lock 지원으로 DynamoDB 없이 State Lock 구성이 가능해져 전환 시점으로 판단. 기존 State 이관 + AWS AccessKey → OIDC 인증 전환으로 보안도 동시 강화.</li>
                   <li>Import 단계화 전략: 일괄 Import는 의존 관계·사이드이펙트 리스크가 높아 서비스 영향 없는 리소스부터 단계적으로 코드화. ArgoCD 충돌 이후 두 도구 간 소유권 경계를 문서화해 재발 방지.</li>
                   <li>환경별 Workspace 분리: dev·stage·prod·mgmt 환경별 Workspace를 분리해 Plan/Apply 영향 범위를 격리, 공유 모듈 재사용 기반으로 샌드박스 자동화까지 확장.</li>
+                  <li><strong>REST API provider로 정책 IaC화:</strong> 정책 변경을 PR 리뷰·plan 검증으로 통제하려고 QueryPie API를 범용 REST API provider로 감싸 코드화. import 불가 문제는 seed-state 스크립트로 기존 정책을 서비스 중단 없이 편입.</li>
                 </ul>
               </div>
               <div class="project-section">
@@ -2488,6 +2490,7 @@
                   <li>기존 AWS 리소스를 단계적으로 Terraform 코드화하며 EKS·IRSA·공통 리소스를 모듈로 분리, ArgoCD와 Terraform의 소유권 경계 재정의·문서화.</li>
                   <li>TFC에서 <strong>GitHub + S3 State 백엔드</strong>로 이관하며 S3 네이티브 Lock 구성 및 <strong>AWS OIDC</strong> 인증 전환.</li>
                   <li>Confluent Kafka 리소스까지 Terraform 관리 범위 확장.</li>
+                  <li>DB 접근제어(QueryPie)의 접근·마스킹·민감도 정책까지 Terraform 관리 범위 확장, 콘솔 직접 변경을 잡는 일일 드리프트 감사·승인 후 복구 워크플로우 구성.</li>
                   <li>dev·stage·prod·mgmt 환경별 Workspace 분리 운영.</li>
                   <li>모듈 재사용 기반으로 샌드박스 환경의 구성·해제 자동화.</li>
                 </ul>
