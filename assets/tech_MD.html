@@ -641,7 +641,7 @@
     <div class="about">
       <p>오픈소스·클라우드 전문 기업에서 K8s·온프레미스 인프라 엔지니어로 커리어를 시작해, MSP에서 공공·금융권 하이브리드 클라우드 전환, 헬스케어 O2O 플랫폼(MAU 200만)에서 대규모 EKS 운영·고도화까지 다양한 산업군에서 Kubernetes 기반 인프라를 설계·구축·운영해왔으며, Cloit 재직 시에는 공공·금융권 최초 NCP Hybrid Cloud 환경을 IBK기업은행에 구축하며 현대적인 K8s 기반 운영 체계를 직접 수립한 경험이 있습니다.</p>
 
-      <p>비브로스에서는 SaaS→OSS 전환·ARM(Graviton)·Karpenter 노드풀 전략으로 인프라 전체 비용을 20% 절감하고, Blue-Green→Multi-Target 전략으로 EKS 업데이트 소요 시간을 10시간에서 5분으로 단축했으며, Terraform IaC를 도입하고 모니터링을 SaaS에서 오픈소스로 전환해 관측 비용을 70% 절감하고 SLO 99.9% 체계를 갖췄고, GuardDuty·WAF와 보안 가드레일로 보안 대응 속도를 70% 이상 개선하는 등 DevOps 운영 전반의 자동화·표준화에 기여해왔습니다.</p>
+      <p>비브로스에서는 SaaS→OSS 전환·ARM(Graviton)·Karpenter 노드풀 전략으로 인프라 전체 비용을 20% 절감하고, 신·구 클러스터를 병행하는 Blue-Green 방식으로 EKS를 1.25부터 1.35까지 3년간 무중단 업데이트했으며, Terraform IaC를 도입하고 모니터링을 SaaS에서 오픈소스로 전환해 관측 비용을 70% 절감하고 SLO 99.9% 체계를 갖췄고, GuardDuty·WAF와 보안 가드레일로 보안 대응 속도를 70% 이상 개선하는 등 DevOps 운영 전반의 자동화·표준화에 기여해왔습니다.</p>
 
       <p>저는 클라우드 아키텍처 설계부터 K8s 환경 구축, GitOps 배포 자동화, 비용·보안·관측 최적화까지 DevOps 엔지니어링 전 영역을 경험하며, 개발자가 인프라 세부 사항을 걱정하지 않고 셀프서비스로 배포할 수 있는 표준화된 파이프라인과, 장애 예방·자동화·비용 효율화가 동시에 작동하는 운영 체계를 지향해왔으며, 이를 사내 인프라 플랫폼 '배럭'으로 구현해 인프라 요청을 셀프서비스로 전환했습니다.</p>
 
@@ -698,8 +698,8 @@
           <div class="str-desc">Blue-Green→Multi-Target 전략으로 고도화해 ALB 타깃그룹 가중치 기반 점진 전환과 즉시 롤백 체계를 확보했습니다.</div>
         </div>
         <div class="str-kpi">
-          <div class="str-kpi-val">10h → 5min</div>
-          <div class="str-kpi-lbl">업데이트 소요 시간</div>
+          <div class="str-kpi-val">3년 무중단</div>
+          <div class="str-kpi-lbl">EKS 1.25 → 1.35</div>
         </div>
       </a>
 
@@ -745,7 +745,7 @@
         <ol class="work-list">
           <li><strong>사내 인프라 플랫폼 '배럭' 설계·구축</strong> — 티켓으로 받던 인프라 요청을 셀프서비스로 전환, 요청 처리 <span class="kpi">약 1일 → 6~9분</span> · 오픈 이후 <span class="kpi">137건</span> 처리</li>
           <li><strong>인프라 아키텍처·비용 최적화</strong> — ARM(Graviton)·Karpenter·SaaS→OSS 전환으로 인프라 전체 월 비용 <span class="kpi">20% 절감</span> 및 Observability 비용 <span class="kpi">70% 절감</span></li>
-          <li><strong>무중단 클러스터 업데이트</strong> — Blue-Green→Multi-Target 전환으로 업데이트 소요 시간 <span class="kpi">10h → 5min</span> 단축, EKS 1.25→1.35 3년간 무중단 운영 유지</li>
+          <li><strong>무중단 클러스터 업데이트</strong> — 신·구 클러스터를 병행하는 Blue-Green 방식으로 실트래픽 단계 검증·즉시 롤백, EKS 1.25→1.35 <span class="kpi">3년간 무중단</span> 운영 유지</li>
           <li><strong>SLI/SLO·통합 Observability 체계</strong> — Grafana Stack 단일 관제로 <span class="kpi">SLO 99.9% 3개월 연속 달성</span>, <span class="kpi">P90 응답 &lt;1s</span>, DB 성능 <span class="kpi">30% 향상</span></li>
           <li><strong>클라우드 보안 자동화</strong> — GuardDuty→Security Hub→Amazon Q 파이프라인으로 보안 대응 <span class="kpi">70%+ 개선</span>, WAF 튜닝으로 비정상 API <span class="kpi">20%+ 감소</span></li>
           <li><strong>IaC·CI 표준화·사내 플랫폼</strong> — 샌드박스 <span class="kpi">10분 내외 구성</span>, Docker 빌드 <span class="kpi">3~4분 → 30초~1분</span>, Proxmox <span class="kpi">40%+ VM 증설</span>·AI 서비스 <span class="kpi">6h MVP</span></li>
@@ -1062,8 +1062,8 @@
         </ul>
         <p class="proj-sec-title">[성과]</p>
         <ul class="blist">
-          <li>업데이트 소요 시간 <strong>10h → 5min 단축</strong> — 기존 In-place 3단계 업데이트·검증 → 트래픽 전환·정상 트래픽 확인까지</li>
-          <li><strong>EKS 1.25 → 1.35</strong>까지 3년간 무중단 운영</li>
+          <li>신·구 클러스터를 병행하는 <strong>Blue-Green 방식</strong>으로 새 버전을 실트래픽에서 단계 검증한 뒤 전환, 이상 시 즉시 롤백</li>
+          <li><strong>EKS 1.25 → 1.35</strong>까지 <strong>3년간 무중단</strong> 운영</li>
           <li>업데이트 중에도 애자일 배포·핫픽스 대응이 가능한 체계 확보</li>
         </ul>
       </div>
